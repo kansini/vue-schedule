@@ -41,6 +41,7 @@
         color: #333;
 
         &:hover {
+            transform: scale(1.2);
             @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
         }
 
@@ -53,7 +54,7 @@
 
     .rotate {
         &:hover {
-            transform: rotate(-180deg);
+            transform: rotate(-360deg);
         }
     }
 

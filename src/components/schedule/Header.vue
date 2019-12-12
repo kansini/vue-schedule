@@ -6,6 +6,16 @@
             </div>
             <h2>VUE Schedule</h2>
         </div>
+        <div class="schedule-header-center">
+            <div class="toggle-view-tab">
+                <div class="toggle-view-tab-item" v-for="(item,index) in views"
+                     :class="[{current:index == currentViewIndex},{notCurrent:index != currentViewIndex}]"
+                     :key="index"
+                     @click="handleToSwitch(index)">
+                    {{item}}
+                </div>
+            </div>
+        </div>
         <div class="schedule-header-item">
             <div class="toggleDate" v-if="currentViewIndex === 2">
                 <div class="btn-prev" @click="handlePrevMonth"></div>
@@ -18,10 +28,14 @@
                 <div class="btn-next" @click="handleNextYear"></div>
             </div>
             <el-tooltip class="item" effect="dark" placement="top" content="返回当前">
-                <oh-button icon="settings_backup_restore" rotate @click="handleToday"></oh-button>
+                <oh-button icon="restore" rotate @click="handleToday"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="新增日志">
-                <oh-button icon="add" rotate @click="addSchedule"></oh-button>
+                <oh-button icon="add_circle_outline" @click="addSchedule"></oh-button>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="提醒">
+                <oh-button :icon="notify?'notifications_active':'notifications'" :class="{notify:notify}"
+                           @click="notify = !notify"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="更换主题" placement="top">
                 <oh-button icon="color_lens" @click="showTheme(true)"></oh-button>
@@ -47,16 +61,6 @@
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
-        <div class="schedule-header-center">
-            <div class="toggle-view-tab">
-                <div class="toggle-view-tab-item" v-for="(item,index) in views"
-                     :class="[{current:index == currentViewIndex},{notCurrent:index != currentViewIndex}]"
-                     :key="index"
-                     @click="handleToSwitch(index)">
-                    {{item}}
-                </div>
-            </div>
-        </div>
     </div>
 
 </template>
@@ -70,7 +74,9 @@
             return {
                 views: ["日", "周", "月", "年"],
                 isFullscreen: false,
-                fullscreenIcon: "fullscreen"
+                fullscreenIcon: "fullscreen",
+                notify: true,
+                isPlay:false
             }
         },
         computed: {
@@ -175,9 +181,9 @@
         justify-content: space-between;
         padding: 16px;
         box-sizing: border-box;
-        // border-bottom: 1px solid #f1f1f1;
-        background: rgba(255, 255, 255, .9);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+        border-bottom: 1px solid #f1f1f1;
+        background: rgba(255, 255, 255, .8);
+        box-shadow: 0 20px 40px rgba(255, 255, 255, 1);
         z-index: 999;
 
         .schedule-header-item {
@@ -344,6 +350,30 @@
             font-size: 14px;
             color: #2061FF;
             cursor: pointer;
+        }
+
+        .notify {
+            @include listInfo_icon_theme($header-color-theme1);
+            animation: swing linear .3s infinite;
+        }
+
+        @keyframes swing {
+            0% {
+                transform: rotate(25deg);
+            }
+            25% {
+                transform: rotate(-25deg);
+            }
+            50% {
+                transform: rotate(25deg);
+            }
+            75% {
+                transform: rotate(-25deg);
+            }
+            100% {
+                transform: rotate(25deg);
+            }
+
         }
     }
 </style>

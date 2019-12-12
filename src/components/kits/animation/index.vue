@@ -32,7 +32,11 @@
                 type: String,
                 default: 'transparent'
             }
-
+        },
+        data() {
+            return {
+                isPlay: false
+            }
         },
         mounted() {
             this.init()
@@ -47,6 +51,15 @@
                     autoplay: true,
                     path: this.path // the path to the animation json
                 })
+            },
+            toggleAni() {
+                if (!this.isPlay) {
+                    lottie.play()
+                    this.isPlay = true
+                } else {
+                    lottie.pause()
+                    this.isPlay = false
+                }
             },
         }
     }
