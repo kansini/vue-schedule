@@ -11,9 +11,8 @@
                     </el-tooltip>
                 </li>
             </ul>
-            <div class="btn-group-center">
+            <div class="btn-group">
                 <el-button type="primary" icon="el-icon-check" @click="confirm(false)">确定</el-button>
-                <el-button @click="initTheme('theme1')" icon="el-icon-refresh-right">重置</el-button>
             </div>
         </div>
     </transition>
@@ -85,14 +84,14 @@
             },
             confirm(showThemeSelector) {
                 this.$store.commit('theme/SET_THEME_SELECTOR', {showThemeSelector})
-				window.localStorage.setItem('themeIndex', this.currentThemeIndex);
-				window.localStorage.setItem('themeName', this.currentThemeName);
+                window.localStorage.setItem('themeIndex', this.currentThemeIndex);
+                window.localStorage.setItem('themeName', this.currentThemeName);
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .themeSelector-modal {
         position: absolute;
         background: rgba(255, 255, 255, .9);
@@ -202,5 +201,10 @@
         display: flex;
         justify-content: center;
         margin-bottom: 16px;
+    }
+    .btn-group {
+        position: absolute;
+        right: 16px;
+        bottom:16px;
     }
 </style>

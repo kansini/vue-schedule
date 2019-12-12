@@ -73,7 +73,7 @@
 
 <style lang="scss" scoped>
     .schedule-year-view {
-      margin-top: 16px;
+        padding-top: 24px;
 
         .schedule-year-list {
             display: flex;

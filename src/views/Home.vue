@@ -7,13 +7,11 @@
 
 <script>
     import schedule from '@/components/schedule'
-    import theme from '@/components/theme'
 
     export default {
         name: 'home',
         components: {
-            schedule,
-            theme
+            schedule
         }
     }
 </script>

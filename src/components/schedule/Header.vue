@@ -1,9 +1,6 @@
 <template>
     <div class="schedule-header">
         <div class="schedule-header-item">
-            <el-tooltip class="item" effect="dark" content="返回今天" placement="top">
-                <el-button icon="el-icon-date" circle @click="handleToday"></el-button>
-            </el-tooltip>
             <div class="toggleDate" v-if="currentViewIndex === 2">
                 <div class="btn-prev" @click="handlePrevMonth"></div>
                 <div class="current-date">{{currentDate}}</div>
@@ -14,26 +11,17 @@
                 <div class="current-date">{{this.time.year}}年</div>
                 <div class="btn-next" @click="handleNextYear"></div>
             </div>
-        </div>
-        <div class="schedule-header-center">
-            <div class="toggle-view-tab">
-                <div class="toggle-view-tab-item" v-for="(item,index) in views"
-                     :class="[{current:index == currentViewIndex},{notCurrent:index != currentViewIndex}]"
-                     :key="index"
-                     @click="handleToSwitch(index)">
-                    {{item}}
-                </div>
-            </div>
-        </div>
-        <div class="schedule-header-item">
+            <el-tooltip class="item" effect="dark" placement="top" content="返回今天">
+                <oh-button icon="settings_backup_restore" rotate @click="handleToday"></oh-button>
+            </el-tooltip>
             <el-tooltip class="item" effect="dark" content="新增日志">
-                <el-button icon="el-icon-plus" circle @click="addSchedule"></el-button>
+                <oh-button icon="add" rotate @click="addSchedule"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="更换主题" placement="top">
-                <el-button icon="el-icon-magic-stick" circle @click="showTheme(true)"></el-button>
+                <oh-button icon="color_lens" @click="showTheme(true)"></oh-button>
             </el-tooltip>
             <el-dropdown trigger="click">
-                <el-button icon="el-icon-more" circle></el-button>
+                <oh-button icon="menu"></oh-button>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>
                         <i class="el-icon-setting"></i>
@@ -49,7 +37,16 @@
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
-
+        </div>
+        <div class="schedule-header-center">
+            <div class="toggle-view-tab">
+                <div class="toggle-view-tab-item" v-for="(item,index) in views"
+                     :class="[{current:index == currentViewIndex},{notCurrent:index != currentViewIndex}]"
+                     :key="index"
+                     @click="handleToSwitch(index)">
+                    {{item}}
+                </div>
+            </div>
         </div>
     </div>
 
@@ -139,7 +136,7 @@
                 this.$store.commit("schedule/SET_TIME", {time})
             },
             showTheme(showThemeSelector) {
-                this.$store.commit('theme/SET_THEME_SELECTOR',{showThemeSelector})
+                this.$store.commit('theme/SET_THEME_SELECTOR', {showThemeSelector})
             }
         }
     }
@@ -147,22 +144,28 @@
 
 <style lang="scss">
     .schedule-header {
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        padding-bottom: 16px;
-        //box-shadow: 0 4px 10px rgba(0,0,0,.1);
+        justify-content: flex-end;
+        padding: 16px;
+        box-sizing: border-box;
         border-bottom: 1px solid #e8e8e8;
+        background: rgba(255,255,255,.85);
+        z-index: 999;
 
         .schedule-header-item {
             align-items: center;
             display: flex;
             justify-content: space-between;
-            .toggleDate{
+
+            .toggleDate {
                 align-items: center;
                 display: flex;
                 justify-content: space-between;
+
                 .btn-prev,
                 .btn-next {
                     cursor: pointer;
@@ -208,8 +211,8 @@
                 margin-left: 16px;
             }
 
-            .el-button + .el-button {
-                margin-left: 16px;
+            .oh-button + .oh-button {
+                margin-left: 8px;
             }
 
             .btn-today {
@@ -236,52 +239,54 @@
             width: 256px;
             left: calc(50% - 128px);
 
-            .toggle-view-tab {
-                display: flex;
+        }
 
-                .toggle-view-tab-item {
-                    width: 64px;
-                    height: 40px;
-                    line-height: 40px;
-                    text-align: center;
-                    font-size: 14px;
-                    //color: #999;
-                    font-weight: 300;
-                    @include border_theme($border_theme1);
-                    border: 1px solid;
-                    box-sizing: border-box;
-                    transition: all ease .6s;
-                    cursor: pointer;
+        .toggle-view-tab {
+            display: flex;
 
-                    &:not(:nth-child(1)) {
-                        margin-left: -1px;
-                    }
+            .toggle-view-tab-item {
+                width: 64px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                font-size: 14px;
+                //color: #999;
+                font-weight: 300;
+                @include border_theme($border_theme1);
+                border: 1px solid;
+                box-sizing: border-box;
+                transition: all ease .6s;
+                cursor: pointer;
 
-                    &:nth-child(1) {
-                        border-radius: 6px 0 0 6px;
-                    }
-
-                    &:nth-last-child(1) {
-                        border-radius: 0 6px 6px 0;
-                    }
+                &:not(:nth-child(1)) {
+                    margin-left: -1px;
                 }
 
-                .notCurrent {
-                    @include listInfo_icon_theme($header-color-theme1);
-
-                    &:hover {
-                        @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
-                    }
+                &:nth-child(1) {
+                    border-radius: 6px 0 0 6px;
                 }
 
-                .current {
-                    @include border_theme($border_theme1);
-                    @include background_theme($background-theme1);
-                    color: #fff;
-                    box-sizing: border-box;
+                &:nth-last-child(1) {
+                    border-radius: 0 6px 6px 0;
                 }
             }
+
+            .notCurrent {
+                @include listInfo_icon_theme($header-color-theme1);
+
+                &:hover {
+                    @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
+                }
+            }
+
+            .current {
+                @include border_theme($border_theme1);
+                @include background_theme($background-theme1);
+                color: #fff;
+                box-sizing: border-box;
+            }
         }
+
 
         .current-date {
             font-size: 24px;

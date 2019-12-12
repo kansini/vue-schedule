@@ -245,11 +245,11 @@
   line-height: 1.8;
   min-width: 16px;
   max-width: 70%;
-  @include background_theme($light-bg-theme1);
+  //@include background_theme($light-bg-theme1);
 }
 
 .el-tooltip__popper .popper__arrow, .el-tooltip__popper .popper__arrow::after {
-  @include descending_theme($ascendingArrow-theme1);
+  //@include descending_theme($ascendingArrow-theme1);
 }
 
 .el-slider__bar {
