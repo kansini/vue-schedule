@@ -1,7 +1,7 @@
 <template>
     <div class="schedule-header">
         <div class="schedule-header-item">
-            <el-tooltip class="item" effect="dark" content="返回今天" placement="top" style="margin-right: 16px">
+            <el-tooltip class="item" effect="dark" content="返回今天" placement="top">
                 <el-button icon="el-icon-date" circle @click="handleToday"></el-button>
             </el-tooltip>
             <div class="toggleDate" v-if="currentViewIndex === 2">
@@ -26,11 +26,11 @@
             </div>
         </div>
         <div class="schedule-header-item">
-            <el-tooltip class="item" effect="dark" content="新增日志" placement="top">
+            <el-tooltip class="item" effect="dark" content="新增日志">
                 <el-button icon="el-icon-plus" circle @click="addSchedule"></el-button>
             </el-tooltip>
-            <el-tooltip class="item" effect="dark" content="搜索" placement="top">
-                <el-button icon="el-icon-search" circle @click="showTheme(true)"></el-button>
+            <el-tooltip class="item" effect="dark" content="更换主题" placement="top">
+                <el-button icon="el-icon-magic-stick" circle @click="showTheme(true)"></el-button>
             </el-tooltip>
             <el-dropdown trigger="click">
                 <el-button icon="el-icon-more" circle></el-button>

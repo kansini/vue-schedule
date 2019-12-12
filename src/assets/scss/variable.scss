@@ -98,16 +98,16 @@ $blue-3:#91D5FF;
 $blue-2:#BAE7FF;
 $blue-1:#E6F7FF;
 
-$geekblue-10:#030852;
-$geekblue-9:#061178;
-$geekblue-8:#10239E;
-$geekblue-7:#1D39C4;
-$geekblue-6:#2F54EB;
-$geekblue-5:#597EF7;
-$geekblue-4:#85A5FF;
-$geekblue-3:#ADC6FF;
-$geekblue-2:#D6E4FF;
-$geekblue-1:#F0F5FF;
+$geekBlue-10:#030852;
+$geekBlue-9:#061178;
+$geekBlue-8:#10239E;
+$geekBlue-7:#1D39C4;
+$geekBlue-6:#2F54EB;
+$geekBlue-5:#597EF7;
+$geekBlue-4:#85A5FF;
+$geekBlue-3:#ADC6FF;
+$geekBlue-2:#D6E4FF;
+$geekBlue-1:#F0F5FF;
 
 $purple-10:#120338;
 $purple-9:#22075E;
@@ -142,10 +142,6 @@ $gray-3:#F5F5F5;
 $gray-2:#F1F1F1;
 $gray-1:#FAFAFA;
 
-$ruijin-dark:#B59050;
-$ruijin-medium:rgba(206,170,107,1);
-$ruijin-light:rgba(206,170,107,.1);
-
 $theme1-color-dark:$blue-8;
 $theme1-color-default:$blue-6;
 $theme1-color-light:$blue-1;
@@ -161,9 +157,6 @@ $theme3-color-light:#FFF8EF;
 $theme4-color-dark:#E94030;
 $theme4-color-default:#ff6f61;
 $theme4-color-light:#FFF2F0;
-// $theme4-color-dark:#FF6600;
-// $theme4-color-default:$orange-6;
-// $theme4-color-light:$orange-1;
 
 $theme5-color-dark:#773934;
 $theme5-color-default:#AF605A;
@@ -274,42 +267,6 @@ $ascendingArrow-theme6:$theme6-color-default;
 $ascendingArrow-theme7:$theme7-color-default;
 $ascendingArrow-theme8:$theme8-color-default;
 
-// $descendingArrow-theme1:$theme1-color-default;
-// $descendingArrow-theme2:$theme2-color-default;
-// $descendingArrow-theme3:$theme3-color-default;
-// $descendingArrow-theme4:$theme4-color-default;
-// $descendingArrow-theme5:$theme5-color-default;
-// $descendingArrow-theme6:$theme6-color-default;
-// $descendingArrow-theme7:$theme7-color-default;
 
 $cardShadow:0 0 10px 0 rgba(0,0,0,.05);
 $cardShadow-hover:4px 4px 20px 0 rgba(0,0,0,.1);
-
-
-
-$color-errer:#F5222D;
-$color-normal:#1890FF;
-$color-success:#52C41A;
-$color-warning:#FAAD14;
-$color-divider:$gray-4;
-$color-brand:#306EF3;
-$color-text:#49F9F6;
-$color-yellow:#FCC70B;
-$color-red:#FF5D5D;
-$color-green:#38FFBB;
-$color-summary-title:#01B8FB;
-
-//* size *//
-$baseunit:8px;
-$minunit:4px;
-
-
-$bg-dark:#06091A; //背景色
-$bg-light:#f5f5f5;
-$text-color:$color-errer; //文字颜色
-$a-color:#306EF3;   // 链接文字颜色
-$a-active-color:#FF3951; //链接文字激活状态颜色
-$a-hover-color:#FF3951;  //链接文字Hover颜色
-$px:8px; //基础单位
-$border:1px solid $gray-4; //分割线
-

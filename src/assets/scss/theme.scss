@@ -260,7 +260,4 @@
   @include listInfo_theme($dropMenu-bg-theme1, $listInfo-border-theme1);
 }
 
-.el-table--striped .el-table__body tr.el-table__row--striped td {
-  //@include light_bg_theme($light-bg-theme1);
-}
 
