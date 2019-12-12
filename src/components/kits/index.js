@@ -1,10 +1,11 @@
 import ohButton from './button'
 import theme from './theme'
-
+import ohAnimation from './animation'
 
 const components = {
     ohButton,
-    theme
+    theme,
+    ohAnimation
 }
 
 const install = (Vue, opts = {}) => {

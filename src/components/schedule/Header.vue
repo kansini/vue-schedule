@@ -1,7 +1,10 @@
 <template>
     <div class="schedule-header">
         <div class="schedule-header-item">
-            <h2>Old Hong Schedule</h2>
+            <div class="logo-icon">
+                <oh-animation id="icon-calendar" renderer="canvas"></oh-animation>
+            </div>
+            <h2>VUE Schedule</h2>
         </div>
         <div class="schedule-header-item">
             <div class="toggleDate" v-if="currentViewIndex === 2">
@@ -181,6 +184,20 @@
             align-items: center;
             display: flex;
             justify-content: space-between;
+
+            .logo-icon {
+                position: relative;
+                width: 48px;
+                height: 48px;
+                margin-right: 8px;
+                overflow: hidden;
+
+                #icon-calendar {
+                    position: absolute;
+                    left: -36px;
+                    top: -36px
+                }
+            }
 
             .toggleDate {
                 align-items: center;
