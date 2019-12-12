@@ -1,6 +1,9 @@
 <template>
     <div class="schedule-header">
         <div class="schedule-header-item">
+            <h2>Old Hong Schedule</h2>
+        </div>
+        <div class="schedule-header-item">
             <div class="toggleDate" v-if="currentViewIndex === 2">
                 <div class="btn-prev" @click="handlePrevMonth"></div>
                 <div class="current-date">{{currentDate}}</div>
@@ -11,7 +14,7 @@
                 <div class="current-date">{{this.time.year}}年</div>
                 <div class="btn-next" @click="handleNextYear"></div>
             </div>
-            <el-tooltip class="item" effect="dark" placement="top" content="返回今天">
+            <el-tooltip class="item" effect="dark" placement="top" content="返回当前">
                 <oh-button icon="settings_backup_restore" rotate @click="handleToday"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="新增日志">
@@ -19,6 +22,9 @@
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="更换主题" placement="top">
                 <oh-button icon="color_lens" @click="showTheme(true)"></oh-button>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="全屏" placement="top">
+                <oh-button :icon="fullscreenIcon" @click="toggleFullscreen"></oh-button>
             </el-tooltip>
             <el-dropdown trigger="click">
                 <oh-button icon="menu"></oh-button>
@@ -54,11 +60,14 @@
 
 <script>
     import * as CALENDAR from '@/utils/calendar.js'
+    import screenFull from 'screenfull'
 
     export default {
         data() {
             return {
-                views: ["日", "周", "月", "年"]
+                views: ["日", "周", "月", "年"],
+                isFullscreen: false,
+                fullscreenIcon: "fullscreen"
             }
         },
         computed: {
@@ -137,7 +146,18 @@
             },
             showTheme(showThemeSelector) {
                 this.$store.commit('theme/SET_THEME_SELECTOR', {showThemeSelector})
+            },
+            toggleFullscreen() {
+                screenFull.toggle()
+                if (!this.isFullScreen) {
+                    this.isFullScreen = true
+                    this.fullscreenIcon = "fullscreen_exit"
+                } else {
+                    this.isFullScreen = false
+                    this.fullscreenIcon = "fullscreen"
+                }
             }
+
         }
     }
 </script>
@@ -149,11 +169,12 @@
         left: 0;
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         padding: 16px;
         box-sizing: border-box;
-        border-bottom: 1px solid #e8e8e8;
-        background: rgba(255,255,255,.85);
+        // border-bottom: 1px solid #f1f1f1;
+        background: rgba(255, 255, 255, .9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
         z-index: 999;
 
         .schedule-header-item {
