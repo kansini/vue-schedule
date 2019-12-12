@@ -1,0 +1,436 @@
+@charset "utf-8";
+@import "./variable";
+
+@mixin header_theme($color) {
+  background: $color;
+  [data-theme="theme1"] & {
+    background: $header-color-theme1;
+    box-shadow: 0 0px 20px $header-color-theme1;
+  }
+  [data-theme="theme2"] & {
+    background: $header-color-theme2;
+    box-shadow: 0 0px 20px $header-color-theme2;
+  }
+  [data-theme="theme3"] & {
+    background: $header-color-theme3;
+    box-shadow: 0 0px 20px $header-color-theme3;
+  }
+  [data-theme="theme4"] & {
+    background: $header-color-theme4;
+    box-shadow: 0 0px 20px $header-color-theme4;
+  }
+  [data-theme="theme5"] & {
+    background: $header-color-theme5;
+    box-shadow: 0 0px 20px $header-color-theme5;
+  }
+  [data-theme="theme6"] & {
+    background: $header-color-theme6;
+    box-shadow: 0 0px 20px $header-color-theme6;
+  }
+  [data-theme="theme7"] & {
+    background: $header-color-theme7;
+    box-shadow: 0 0px 20px $header-color-theme7;
+  }
+  [data-theme="theme8"] & {
+    background: $header-color-theme8;
+    box-shadow: 0 0px 20px $header-color-theme8;
+  }
+}
+
+@mixin dropMenu_theme($color,$bgColor) {
+  color: $color;
+  background: $bgColor;
+  [data-theme="theme1"] & {
+    color: $dropMenu-color-theme1;
+    background: $dropMenu-bg-theme1;
+  }
+  [data-theme="theme2"] & {
+    color: $dropMenu-color-theme2;
+    background: $dropMenu-bg-theme2;
+  }
+  [data-theme="theme3"] & {
+    color: $dropMenu-color-theme3;
+    background: $dropMenu-bg-theme3;
+  }
+  [data-theme="theme4"] & {
+    color: $dropMenu-color-theme4;
+    background: $dropMenu-bg-theme4;
+  }
+  [data-theme="theme5"] & {
+    color: $dropMenu-color-theme5;
+    background: $dropMenu-bg-theme5;
+  }
+  [data-theme="theme6"] & {
+    color: $dropMenu-color-theme6;
+    background: $dropMenu-bg-theme6;
+  }
+  [data-theme="theme7"] & {
+    color: $dropMenu-color-theme7;
+    background: $dropMenu-bg-theme7;
+  }
+  [data-theme="theme8"] & {
+    color: $dropMenu-color-theme8;
+    background: $dropMenu-bg-theme8;
+  }
+}
+
+@mixin listInfo_theme($bgColor,$border) {
+  background: $bgColor;
+  border: $border;
+  [data-theme="theme1"] & {
+    background: $dropMenu-bg-theme1;
+    border: 1px solid $listInfo-border-theme1;
+  }
+  [data-theme="theme2"] & {
+    background: $dropMenu-bg-theme2;
+    border: 1px solid $listInfo-border-theme2;
+  }
+  [data-theme="theme3"] & {
+    background: $dropMenu-bg-theme3;
+    border: 1px solid $listInfo-border-theme3;
+  }
+  [data-theme="theme4"] & {
+    background: $dropMenu-bg-theme4;
+    border: 1px solid $listInfo-border-theme4;
+  }
+  [data-theme="theme5"] & {
+    background: $dropMenu-bg-theme5;
+    border: 1px solid $listInfo-border-theme5;
+  }
+  [data-theme="theme6"] & {
+    background: $dropMenu-bg-theme6;
+    border: 1px solid $listInfo-border-theme6;
+  }
+  [data-theme="theme7"] & {
+    background: $dropMenu-bg-theme7;
+    border: 1px solid $listInfo-border-theme7;
+  }
+  [data-theme="theme8"] & {
+    background: $dropMenu-bg-theme8;
+    border: 1px solid $listInfo-border-theme8;
+  }
+}
+
+@mixin listInfo_icon_theme($color) {
+  color: $color;
+  [data-theme="theme1"] & {
+    color: $dropMenu-color-theme1;
+  }
+  [data-theme="theme2"] & {
+    color: $dropMenu-color-theme2;
+  }
+  [data-theme="theme3"] & {
+    color: $dropMenu-color-theme3;
+  }
+  [data-theme="theme4"] & {
+    color: $dropMenu-color-theme4;
+  }
+  [data-theme="theme5"] & {
+    color: $dropMenu-color-theme5;
+  }
+  [data-theme="theme6"] & {
+    color: $dropMenu-color-theme6;
+  }
+  [data-theme="theme7"] & {
+    color: $dropMenu-color-theme7;
+  }
+  [data-theme="theme8"] & {
+    color: $dropMenu-color-theme8;
+  }
+}
+
+//主按钮主题
+@mixin btn_primary_theme($bgColor,$border) {
+  background: $bgColor;
+  border: $border;
+  [data-theme="theme1"] & {
+    background: $dropMenu-color-theme1;
+    border: 1px solid $dropMenu-color-theme1
+  }
+  [data-theme="theme2"] & {
+    background: $dropMenu-color-theme2;
+    border: 1px solid $dropMenu-color-theme2;
+  }
+  [data-theme="theme3"] & {
+    background: $dropMenu-color-theme3;
+    border: 1px solid $dropMenu-color-theme3;
+  }
+  [data-theme="theme4"] & {
+    background: $dropMenu-color-theme4;
+    border: 1px solid $dropMenu-color-theme4;
+  }
+  [data-theme="theme5"] & {
+    background: $dropMenu-color-theme5;
+    border: 1px solid $dropMenu-color-theme5;
+  }
+  [data-theme="theme6"] & {
+    background: $dropMenu-color-theme6;
+    border: 1px solid $dropMenu-color-theme6;
+  }
+  [data-theme="theme7"] & {
+    background: $dropMenu-color-theme7;
+    border: 1px solid $dropMenu-color-theme7;
+  }
+  [data-theme="theme8"] & {
+    background: $dropMenu-color-theme8;
+    border: 1px solid $dropMenu-color-theme8;
+  }
+}
+
+//default按钮主题
+@mixin button_default_theme($color,$bgColor,$border) {
+  color: $color;
+  background: $bgColor;
+  border: $border;
+  [data-theme="theme1"] & {
+    color: $dropMenu-color-theme1;
+    background: $dropMenu-bg-theme1;
+    border: 1px solid $dropMenu-color-theme1
+  }
+  [data-theme="theme2"] & {
+    color: $dropMenu-color-theme2;
+    background: $dropMenu-bg-theme2;
+    border: 1px solid $dropMenu-color-theme2;
+  }
+  [data-theme="theme3"] & {
+    color: $dropMenu-color-theme3;
+    background: $dropMenu-bg-theme3;
+    border: 1px solid $dropMenu-color-theme3;
+  }
+  [data-theme="theme4"] & {
+    color: $dropMenu-color-theme4;
+    background: $dropMenu-bg-theme4;
+    border: 1px solid $dropMenu-color-theme4;
+  }
+  [data-theme="theme5"] & {
+    color: $dropMenu-color-theme5;
+    background: $dropMenu-bg-theme5;
+    border: 1px solid $dropMenu-color-theme5;
+  }
+  [data-theme="theme6"] & {
+    color: $dropMenu-color-theme6;
+    background: $dropMenu-bg-theme6;
+    border: 1px solid $dropMenu-color-theme6;
+  }
+  [data-theme="theme7"] & {
+    color: $dropMenu-color-theme7;
+    background: $dropMenu-bg-theme7;
+    border: 1px solid $dropMenu-color-theme7;
+  }
+  [data-theme="theme8"] & {
+    color: $dropMenu-color-theme8;
+    background: $dropMenu-bg-theme8;
+    border: 1px solid $dropMenu-color-theme8;
+  }
+}
+
+//badge主题
+@mixin badge_theme($color,$bgColor) {
+  color: $color;
+  background: $bgColor;
+  [data-theme="theme1"] & {
+    color: $badge-color-theme1;
+    background: $badge-bg-theme1;
+  }
+  [data-theme="theme2"] & {
+    color: $badge-color-theme2;
+    background: $badge-bg-theme2;
+  }
+  [data-theme="theme3"] & {
+    color: $badge-color-theme1;
+    background: $badge-bg-theme1;
+  }
+  [data-theme="theme4"] & {
+    color: $badge-color-theme4;
+    background: $badge-bg-theme4;
+  }
+  [data-theme="theme5"] & {
+    color: $badge-color-theme1;
+    background: $badge-bg-theme1;
+  }
+  [data-theme="theme6"] & {
+    color: $badge-color-theme1;
+    background: $badge-bg-theme1;
+  }
+  [data-theme="theme7"] & {
+    color: $badge-color-theme1;
+    background: $badge-bg-theme1;
+  }
+  [data-theme="theme8"] & {
+    color: $badge-color-theme1;
+    background: $badge-bg-theme1;
+  }
+}
+
+//loading_spin主题
+
+
+@mixin loading_spinner_theme($stroke) {
+  stroke: $stroke;
+  [data-theme="theme1"] & {
+    stroke: $loading-spinner-theme1;
+  }
+  [data-theme="theme2"] & {
+    stroke: $loading-spinner-theme2;
+  }
+  [data-theme="theme3"] & {
+    stroke: $loading-spinner-theme3;
+  }
+  [data-theme="theme4"] & {
+    stroke: $loading-spinner-theme4;
+  }
+  [data-theme="theme5"] & {
+    stroke: $loading-spinner-theme5;
+  }
+  [data-theme="theme6"] & {
+    stroke: $loading-spinner-theme6;
+  }
+  [data-theme="theme7"] & {
+    stroke: $loading-spinner-theme7;
+  }
+  [data-theme="theme8"] & {
+    stroke: $loading-spinner-theme8;
+  }
+}
+
+@mixin background_theme($bg) {
+  background: $bg;
+  [data-theme="theme1"] & {
+    background: $background-theme1;
+  }
+  [data-theme="theme2"] & {
+    background: $background-theme2;
+  }
+  [data-theme="theme3"] & {
+    background: $background-theme3;
+  }
+  [data-theme="theme4"] & {
+    background: $background-theme4;
+  }
+  [data-theme="theme5"] & {
+    background: $background-theme5;
+  }
+  [data-theme="theme6"] & {
+    background: $background-theme6;
+  }
+  [data-theme="theme7"] & {
+    background: $background-theme7;
+  }
+  [data-theme="theme8"] & {
+    background: $background-theme8;
+  }
+}
+
+//边框主题
+@mixin border_theme($borderColor) {
+  border-color: $borderColor;
+  [data-theme="theme1"] & {
+    border-color: $border_theme1;
+  }
+  [data-theme="theme2"] & {
+    border-color: $border_theme2;
+  }
+  [data-theme="theme3"] & {
+    border-color: $border_theme3;
+  }
+  [data-theme="theme4"] & {
+    border-color: $border_theme4;
+  }
+  [data-theme="theme5"] & {
+    border-color: $border_theme5;
+  }
+  [data-theme="theme6"] & {
+    border-color: $border_theme6;
+  }
+  [data-theme="theme7"] & {
+    border-color: $border_theme7;
+  }
+  [data-theme="theme8"] & {
+    border-color: $border_theme8;
+  }
+}
+
+//浅色背景主题
+@mixin light_bg_theme($lightBgColor) {
+  background-color: $lightBgColor;
+  [data-theme="theme1"] & {
+    background-color: $light-bg-theme1;
+  }
+  [data-theme="theme2"] & {
+    background-color: $light-bg-theme2;
+  }
+  [data-theme="theme3"] & {
+    background-color: $light-bg-theme3;
+  }
+  [data-theme="theme4"] & {
+    background-color: $light-bg-theme4;
+  }
+  [data-theme="theme5"] & {
+    background-color: $light-bg-theme5;
+  }
+  [data-theme="theme6"] & {
+    background-color: $light-bg-theme6;
+  }
+  [data-theme="theme7"] & {
+    background-color: $light-bg-theme7;
+  }
+  [data-theme="theme8"] & {
+    background-color: $light-bg-theme8;
+  }
+}
+
+@mixin ascending_theme($ascendingArrow) {
+  border-bottom-color: $ascendingArrow;
+  [data-theme="theme1"] & {
+    border-bottom-color: $ascendingArrow-theme1;
+  }
+  [data-theme="theme2"] & {
+    border-bottom-color: $ascendingArrow-theme2;
+  }
+  [data-theme="theme3"] & {
+    border-bottom-color: $ascendingArrow-theme3;
+  }
+  [data-theme="theme4"] & {
+    border-bottom-color: $ascendingArrow-theme4;
+  }
+  [data-theme="theme5"] & {
+    border-bottom-color: $ascendingArrow-theme5;
+  }
+  [data-theme="theme6"] & {
+    border-bottom-color: $ascendingArrow-theme6;
+  }
+  [data-theme="theme7"] & {
+    border-bottom-color: $ascendingArrow-theme7;
+  }
+  [data-theme="theme8"] & {
+    border-bottom-color: $ascendingArrow-theme8;
+  }
+}
+
+@mixin descending_theme($descendingArrow) {
+  border-top-color: $descendingArrow;
+  [data-theme="theme1"] & {
+    border-top-color: $ascendingArrow-theme1;
+  }
+  [data-theme="theme2"] & {
+    border-top-color: $ascendingArrow-theme2;
+  }
+  [data-theme="theme3"] & {
+    border-top-color: $ascendingArrow-theme3;
+  }
+  [data-theme="theme4"] & {
+    border-top-color: $ascendingArrow-theme4;
+  }
+  [data-theme="theme5"] & {
+    border-top-color: $ascendingArrow-theme5;
+  }
+  [data-theme="theme6"] & {
+    border-top-color: $ascendingArrow-theme6;
+  }
+  [data-theme="theme7"] & {
+    border-top-color: $ascendingArrow-theme7;
+  }
+  [data-theme="theme8"] & {
+    border-top-color: $ascendingArrow-theme8;
+  }
+}

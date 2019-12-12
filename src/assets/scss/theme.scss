@@ -1,0 +1,266 @@
+@import "./mixin";
+
+.el-button--primary,
+.el-date-table td.end-date span, .el-date-table td.start-date span,
+.el-date-table td.current span {
+  @include btn_primary_theme($dropMenu-color-theme1, $dropMenu-color-theme1);
+}
+
+.el-button--primary:hover {
+  opacity: .9;
+  @include btn_primary_theme($dropMenu-color-theme1, $dropMenu-color-theme1);
+}
+
+.el-button--default:hover,
+.el-button--default:focus {
+  @include button_default_theme($dropMenu-color-theme1, $dropMenu-bg-theme1, $listInfo-border-theme1);
+}
+
+.el-button--text,
+.el-dropdown-link,
+.layout-container .el-dropdown .el-dropdown-link {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-menu-item.is-active {
+  position: relative;
+  @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
+}
+
+.el-menu-item::after {
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 100%;
+  transform: scale(0);
+  top: 0;
+  right: 0;
+  @include background_theme($background-theme1);
+  transition: all ease .6s;
+}
+
+.el-menu-item.is-active::after {
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transform: scale(1);
+  @include background_theme($background-theme1);
+}
+
+.el-menu-item:hover,
+.el-menu-item:hover i,
+.el-submenu__title:hover,
+.el-dropdown-menu__item:hover,
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover,
+.dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
+}
+
+.el-dropdown-item:hover {
+  @include listInfo_theme($dropMenu-bg-theme1, $listInfo-border-theme1);
+}
+
+.is-indeterminate .el-checkbox__inner,
+.is-checked .el-checkbox__inner {
+  @include btn_primary_theme($dropMenu-color-theme1, $dropMenu-color-theme1);
+}
+
+.el-radio-button__orig-radio:checked + .el-radio-button__inner {
+  transition: all ease .2s;
+  @include btn_primary_theme($dropMenu-color-theme1, $dropMenu-color-theme1);
+  box-shadow: 0 0 0 0 #409EFF;
+}
+
+.el-radio-button {
+  .el-radio-button__inner:hover {
+    @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
+  }
+}
+
+.el-input__inner:focus,
+.el-select .el-input.is-focus .el-input__inner,
+.el-range-editor.is-active,
+.el-range-editor.is-active:hover,
+.el-textarea__inner:focus,
+.el-pagination__sizes .el-input .el-input__inner:hover,
+.el-input-number:hover .el-input__inner {
+  @include border_theme($border_theme1);
+}
+
+.el-loading-text {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-loading-spinner .path {
+  @include loading_spinner_theme($loading-spinner-theme1);
+}
+
+.el-tabs__item:hover,
+.el-tabs__item.is-active,
+.el-table th > .cell.highlight,
+.el-checkbox__input.is-checked + .el-checkbox__label,
+.el-table-filter__bottom button:hover {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-tabs__active-bar {
+  @include background_theme($background-theme1);
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  @include btn_primary_theme($dropMenu-color-theme1, $dropMenu-color-theme1);
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).number:hover {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-pager .more:hover::before,
+.el-picker-panel__shortcut:hover,
+.el-select-dropdown__item.selected,
+.el-picker-panel__icon-btn:hover,
+.el-input-number__decrease:hover,
+.el-input-number__increase:hover,
+.el-date-table td.available:not(.end-date) div:hover,
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected,
+.el-date-table td.today:not(.current) span {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-date-table td.in-range div {
+  @include light_bg_theme($light-bg-theme1);
+}
+
+.el-date-table td.today + .in-range span {
+  color: #fff;
+}
+
+.el-breadcrumb__inner.is-link:hover,
+.el-breadcrumb__inner a:hover {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-scrollbar__bar {
+  right: 0;
+  //@include light_bg_theme($light-bg-theme1);
+}
+
+.el-scrollbar__thumb {
+  transition: all ease .5s;
+  @include background_theme($background-theme1);
+  opacity: .5;
+}
+
+.el-tabs__nav-next:hover,
+.el-tabs__nav-prev:hover {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.swiper-pagination-bullet {
+  opacity: .3;
+  @include background_theme($background-theme1);
+}
+
+.swiper-pagination-bullet-active {
+  opacity: .8;
+  @include background_theme($background-theme1);
+}
+
+.el-radio__input.is-checked .el-radio__inner {
+  @include background_theme($background-theme1);
+  @include border_theme($border_theme1);
+  opacity: .95;
+}
+
+.el-radio__input .el-radio__inner:hover {
+  @include border_theme($border_theme1);
+}
+
+.el-radio__input.is-checked + .el-radio__label {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-table .descending .sort-caret.descending {
+  @include descending_theme($ascendingArrow-theme1);
+}
+
+.el-table .ascending .sort-caret.ascending {
+  @include ascending_theme($ascendingArrow-theme1);
+}
+
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+  @include light_bg_theme($light-bg-theme1);
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content .el-tree-node__expand-icon {
+  @include listInfo_icon_theme($header-color-theme1);
+}
+
+.el-tree-node__content {
+  padding: 6px 0;
+  //transition: all ease .6s;
+}
+
+.el-tree-node__content:hover {
+  @include listInfo_icon_theme($header-color-theme1);
+  background: #fff;
+}
+
+.el-switch.is-checked .el-switch__core {
+  @include background_theme($background-theme1);
+  @include border_theme($border_theme1);
+}
+
+.el-button--primary.is-plain {
+  @include listInfo_icon_theme($header-color-theme1);
+  @include light_bg_theme($light-bg-theme1);
+}
+
+.el-button--primary.is-plain:hover {
+  color: #fff;
+  @include background_theme($background-theme1);
+}
+
+.el-button--primary.is-disabled,
+.el-button--primary.is-disabled:active,
+.el-button--primary.is-disabled:focus,
+.el-button--primary.is-disabled:hover {
+  opacity: .3;
+}
+
+.el-button--primary.is-plain.is-disabled:hover {
+  opacity: .3;
+  @include listInfo_icon_theme($header-color-theme1);
+  @include light_bg_theme($light-bg-theme1);
+}
+
+.el-tooltip__popper {
+  padding: 8px 12px;
+  line-height: 1.8;
+  min-width: 16px;
+  max-width: 70%;
+  @include background_theme($light-bg-theme1);
+}
+
+.el-tooltip__popper .popper__arrow, .el-tooltip__popper .popper__arrow::after {
+  @include descending_theme($ascendingArrow-theme1);
+}
+
+.el-slider__bar {
+  @include background_theme($background-theme1);
+}
+
+.el-slider__button {
+  @include listInfo_theme($dropMenu-bg-theme1, $listInfo-border-theme1);
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  //@include light_bg_theme($light-bg-theme1);
+}
+
