@@ -30,7 +30,7 @@
                 <el-button icon="el-icon-plus" circle @click="addSchedule"></el-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="搜索" placement="top">
-                <el-button icon="el-icon-search" circle></el-button>
+                <el-button icon="el-icon-search" circle @click="showTheme(true)"></el-button>
             </el-tooltip>
             <el-dropdown trigger="click">
                 <el-button icon="el-icon-more" circle></el-button>
@@ -137,6 +137,9 @@
             },
             setTime(time) {
                 this.$store.commit("schedule/SET_TIME", {time})
+            },
+            showTheme(showThemeSelector) {
+                this.$store.commit('theme/SET_THEME_SELECTOR',{showThemeSelector})
             }
         }
     }
