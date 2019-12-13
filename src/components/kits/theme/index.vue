@@ -11,8 +11,8 @@
                     </el-tooltip>
                 </li>
             </ul>
-            <div class="btn-group">
-                <el-button type="primary" icon="el-icon-check" @click="confirm(false)">确定</el-button>
+            <div class="btn-confirm" >
+                <oh-button type="flat" @click="confirm(false)">确定</oh-button>
             </div>
         </div>
     </transition>
@@ -202,9 +202,16 @@
         justify-content: center;
         margin-bottom: 16px;
     }
+
     .btn-group {
         position: absolute;
         right: 16px;
-        bottom:16px;
+        bottom: 16px;
+    }
+
+    .btn-confirm {
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
     }
 </style>

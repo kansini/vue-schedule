@@ -114,6 +114,11 @@
                 color: #333;
                 font-weight: bold;
                 box-sizing: border-box;
+
+                &:nth-child(6),
+                &:nth-child(7) {
+                    @include listInfo_icon_theme($header-color-theme1);
+                }
             }
         }
 
@@ -136,6 +141,11 @@
                 border-bottom: 1px solid #f1f1f1;
                 box-sizing: border-box;
                 cursor: pointer;
+
+                &:nth-child(7n + 6),
+                &:nth-child(7n) {
+                    @include listInfo_icon_theme($header-color-theme1);
+                }
 
                 .day {
                     display: inline-block;

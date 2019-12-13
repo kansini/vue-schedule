@@ -17,9 +17,14 @@
             </div>
         </div>
         <div class="schedule-header-item">
+            <div class="toggleDate" v-if="currentViewIndex === 0">
+                <div class="btn-prev" @click="handlePrevDay"></div>
+                <div class="current-date">{{this.time.year}}年{{this.time.month+1}}月{{this.time.day}}号</div>
+                <div class="btn-next" @click="handleNextDay"></div>
+            </div>
             <div class="toggleDate" v-if="currentViewIndex === 1">
                 <div class="btn-prev" @click="handlePrevWeek"></div>
-                <div class="current-date">{{currentDate}}</div>
+                <div class="current-date">{{this.time.month+1}}月{{this.time.day}}号</div>
                 <div class="btn-next" @click="handleNextWeek"></div>
             </div>
             <div class="toggleDate" v-if="currentViewIndex === 2">
@@ -33,23 +38,23 @@
                 <div class="btn-next" @click="handleNextYear"></div>
             </div>
             <el-tooltip class="item" effect="dark" placement="top" content="返回当前">
-                <oh-button icon="restore" rotate @click="handleToday"></oh-button>
+                <oh-button icon="restore" rotate circle @click="handleToday"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="新增日志">
-                <oh-button icon="add_circle_outline" @click="addSchedule"></oh-button>
+                <oh-button icon="add_circle_outline" circle @click="addSchedule"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="提醒">
-                <oh-button :icon="notify?'notifications_active':'notifications'" :class="{notify:notify}"
+                <oh-button :icon="notify?'notifications_active':'notifications'" circle :class="{notify:notify}"
                            @click="notify = !notify"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="更换主题" placement="top">
-                <oh-button icon="color_lens" @click="showTheme(true)"></oh-button>
+                <oh-button icon="color_lens" circle @click="showTheme(true)"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="全屏" placement="top">
-                <oh-button :icon="fullscreenIcon" @click="toggleFullscreen"></oh-button>
+                <oh-button :icon="fullscreenIcon" circle @click="toggleFullscreen"></oh-button>
             </el-tooltip>
             <el-dropdown trigger="click">
-                <oh-button icon="menu"></oh-button>
+                <oh-button icon="menu" circle></oh-button>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>
                         <i class="el-icon-setting"></i>
@@ -110,9 +115,26 @@
             }
         },
         methods: {
+            // 前一天
+            handlePrevDay() {
+                this.time.day -= 1
+                let day = new Date(this.time.day + 24 * 60 * 60 * 1000).getDate()
+                let currentDate = `${this.time.year}年${this.time.month+1}月${day}号`;
+                this.toggleCurrentDate(currentDate)
+            },
+            // 后一天
+            handleNextDay() {
+                this.time.day += 1
+                let day = new Date(this.time.day + 24 * 60 * 60 * 1000).getDate()
+                let currentDate = `${this.time.year}年${this.time.month+1}月${day}号`;
+                this.toggleCurrentDate(currentDate)
+            },
             // 上一周
             handlePrevWeek() {
                 this.time.day -= 7
+                let day = new Date(this.time.day + 24 * 60 * 60 * 1000).getDate()
+                let currentDate = `${this.time.year}年${this.time.month+1}月${day}号`;
+                this.toggleCurrentDate(currentDate)
             },
             // 下一周
             handleNextWeek() {

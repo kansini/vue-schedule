@@ -1,7 +1,9 @@
 <template>
-    <div :icon="icon" class="oh-button" :class="{rotate:rotate}" @click="handleToClick">
+    <button :icon="icon" class="oh-button" :class="[{rotate:rotate},{flat:type == 'flat'},
+    {primary:type == 'primary'},{circle:circle}]"
+            @click="handleToClick">
         <slot></slot>
-    </div>
+    </button>
 </template>
 
 <script>
@@ -15,9 +17,17 @@
             rotate: {
                 type: Boolean,
                 default: false
+            },
+            circle: {
+                type: Boolean,
+                default: false
+            },
+            type: {
+                type: String,
+                default: ""
             }
-
         },
+
         methods: {
             handleToClick() {
                 this.$emit('click')
@@ -27,34 +37,63 @@
 </script>
 
 <style lang="scss" scoped>
+    button {
+        border: none;
+        outline: none;
+    }
+
     .oh-button {
         position: relative;
-        width: 40px;
-        height: 40px;
-        line-height: 42px;
+        font-size: 14px;
         text-align: center;
-        border-radius: 20px;
-        //border: 1px solid rgba(0,0,0,0);
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
         box-sizing: border-box;
+        border-radius: 4px;
+        color: #333;
         transition: all linear .4s;
         cursor: pointer;
-        color: #333;
 
         &:hover {
-            transform: scale(1.2);
             @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
         }
+    }
+
+    .circle {
+        padding: 0;
+        width: 40px;
+        line-height: 42px;
+        border-radius: 20px;
 
         &::before {
             content: attr(icon);
             font-family: 'Material Icons';
             font-size: 22px;
         }
+
+        &:hover {
+            transform: scale(1.2);
+            @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
+        }
     }
 
     .rotate {
         &:hover {
             transform: rotate(-360deg);
+        }
+    }
+
+    .flat {
+        @include listInfo_icon_theme($header-color-theme1);
+    }
+
+    .primary {
+        @include background_theme($background-theme1);
+        color: #fff;
+
+        &:hover {
+            filter: brightness(1.2);
         }
     }
 
