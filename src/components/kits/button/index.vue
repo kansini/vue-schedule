@@ -55,9 +55,10 @@
         transition: all linear .4s;
         cursor: pointer;
 
-        &:hover {
-            @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
-        }
+    }
+
+    .oh-button + .oh-button {
+        margin-left: 8px;
     }
 
     .circle {
@@ -85,6 +86,11 @@
 
     .flat {
         @include listInfo_icon_theme($header-color-theme1);
+
+        &:hover {
+            @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
+        }
+
     }
 
     .primary {
@@ -92,7 +98,7 @@
         color: #fff;
 
         &:hover {
-            filter: brightness(1.2);
+             filter: brightness(1.1);
         }
     }
 

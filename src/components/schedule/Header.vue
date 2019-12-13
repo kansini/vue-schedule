@@ -120,21 +120,21 @@
             handlePrevDay() {
                 this.time.day -= 1
                 let day = new Date(this.time.day + 24 * 60 * 60 * 1000).getDate()
-                let currentDate = `${this.time.year}年${this.time.month+1}月${day}号`;
+                let currentDate = `${this.time.year}年${this.time.month + 1}月${day}号`;
                 this.toggleCurrentDate(currentDate)
             },
             // 后一天
             handleNextDay() {
                 this.time.day += 1
                 let day = new Date(this.time.day + 24 * 60 * 60 * 1000).getDate()
-                let currentDate = `${this.time.year}年${this.time.month+1}月${day}号`;
+                let currentDate = `${this.time.year}年${this.time.month + 1}月${day}号`;
                 this.toggleCurrentDate(currentDate)
             },
             // 上一周
             handlePrevWeek() {
                 this.time.day -= 7
                 let day = new Date(this.time.day + 24 * 60 * 60 * 1000).getDate()
-                let currentDate = `${this.time.year}年${this.time.month+1}月${day}号`;
+                let currentDate = `${this.time.year}年${this.time.month + 1}月${day}号`;
                 this.toggleCurrentDate(currentDate)
             },
             // 下一周
@@ -287,10 +287,6 @@
 
             .el-dropdown {
                 margin-left: 16px;
-            }
-
-            .oh-button + .oh-button {
-                margin-left: 8px;
             }
 
             .btn-today {

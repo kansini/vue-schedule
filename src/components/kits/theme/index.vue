@@ -12,7 +12,8 @@
                 </li>
             </ul>
             <div class="btn-confirm" >
-                <oh-button type="flat" @click="confirm(false)">确定</oh-button>
+                <oh-button type="flat" @click="confirm(false)">取消</oh-button>
+                <oh-button type="primary" @click="confirm(false)">确定</oh-button>
             </div>
         </div>
     </transition>
@@ -96,7 +97,7 @@
         position: absolute;
         background: rgba(255, 255, 255, .9);
         width: 400px;
-        height: 280px;
+        height: 240px;
         top: calc(50% - 200px);
         left: calc(50% - 200px);
         border-radius: 12px;
@@ -211,7 +212,7 @@
 
     .btn-confirm {
         position: absolute;
-        right: 8px;
-        bottom: 8px;
+        right: 16px;
+        bottom: 16px;
     }
 </style>

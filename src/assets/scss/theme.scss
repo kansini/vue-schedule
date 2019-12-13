@@ -259,5 +259,8 @@
 .el-slider__button {
   @include listInfo_theme($dropMenu-bg-theme1, $listInfo-border-theme1);
 }
+.el-time-panel__btn.confirm {
+  @include listInfo_icon_theme($header-color-theme1);
+}
 
 
