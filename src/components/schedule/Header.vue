@@ -17,6 +17,11 @@
             </div>
         </div>
         <div class="schedule-header-item">
+            <div class="toggleDate" v-if="currentViewIndex === 1">
+                <div class="btn-prev" @click="handlePrevWeek"></div>
+                <div class="current-date">{{currentDate}}</div>
+                <div class="btn-next" @click="handleNextWeek"></div>
+            </div>
             <div class="toggleDate" v-if="currentViewIndex === 2">
                 <div class="btn-prev" @click="handlePrevMonth"></div>
                 <div class="current-date">{{currentDate}}</div>
@@ -75,8 +80,7 @@
                 views: ["日", "周", "月", "年"],
                 isFullscreen: false,
                 fullscreenIcon: "fullscreen",
-                notify: true,
-                isPlay:false
+                notify: false
             }
         },
         computed: {
@@ -106,6 +110,14 @@
             }
         },
         methods: {
+            // 上一周
+            handlePrevWeek() {
+                this.time.day -= 7
+            },
+            // 下一周
+            handleNextWeek() {
+                this.time.day += 7
+            },
             // 上一个月
             handlePrevMonth() {
                 let prevMonth = CALENDAR.getDate(this.time.year, this.time.month, 1);
@@ -166,7 +178,6 @@
                     this.fullscreenIcon = "fullscreen"
                 }
             }
-
         }
     }
 </script>
@@ -182,7 +193,7 @@
         padding: 16px;
         box-sizing: border-box;
         border-bottom: 1px solid #f1f1f1;
-        background: rgba(255, 255, 255, .8);
+        background: rgba(255, 255, 255, .85);
         box-shadow: 0 20px 40px rgba(255, 255, 255, 1);
         z-index: 999;
 
