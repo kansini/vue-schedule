@@ -9,7 +9,7 @@
                 <yearView v-if="currentViewIndex == 3" :key="currentViewIndex"></yearView>
             </transition-group>
         </div>
-        <el-dialog title="新增日志" :visible.sync="dialogAddSchedule">
+        <el-dialog :visible.sync="dialogAddSchedule">
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogAddSchedule = false">取 消</el-button>
                 <el-button type="primary" @click="dialogAddSchedule = false">确 定</el-button>

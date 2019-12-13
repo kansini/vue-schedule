@@ -82,7 +82,7 @@
 
             .schedule-year-list-item {
                 width: calc(100% / 4);
-                padding: 0 16px;
+                padding: 0 24px;
                 box-sizing: border-box;
                 border-radius: 0px;
                 transition: all ease .6s;

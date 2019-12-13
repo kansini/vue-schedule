@@ -46,7 +46,7 @@
         position: relative;
         font-size: 14px;
         text-align: center;
-        padding: 0 16px;
+        padding: 0 24px;
         height: 40px;
         line-height: 40px;
         box-sizing: border-box;
@@ -63,7 +63,6 @@
     .circle {
         padding: 0;
         width: 40px;
-        line-height: 42px;
         border-radius: 20px;
 
         &::before {
@@ -73,7 +72,7 @@
         }
 
         &:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
         }
     }

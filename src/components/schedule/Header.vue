@@ -4,7 +4,7 @@
             <div class="logo-icon">
                 <oh-animation id="icon-calendar" renderer="canvas"></oh-animation>
             </div>
-            <h2>VUE Schedule</h2>
+            <h2>VUE OH Schedule</h2>
         </div>
         <div class="schedule-header-center">
             <div class="toggle-view-tab">
@@ -19,12 +19,12 @@
         <div class="schedule-header-item">
             <div class="toggleDate" v-if="currentViewIndex === 0">
                 <div class="btn-prev" @click="handlePrevDay"></div>
-                <div class="current-date">{{this.time.year}}年{{this.time.month+1}}月{{this.time.day}}号</div>
+                <div class="current-date">{{this.time.year}}年{{this.time.month+1}}月{{this.time.day}}</div>
                 <div class="btn-next" @click="handleNextDay"></div>
             </div>
             <div class="toggleDate" v-if="currentViewIndex === 1">
                 <div class="btn-prev" @click="handlePrevWeek"></div>
-                <div class="current-date">{{this.time.month+1}}月{{this.time.day}}号</div>
+                <div class="current-date">{{this.time.month+1}}月{{this.time.day}}</div>
                 <div class="btn-next" @click="handleNextWeek"></div>
             </div>
             <div class="toggleDate" v-if="currentViewIndex === 2">
@@ -43,29 +43,30 @@
             <el-tooltip class="item" effect="dark" content="新增日志">
                 <oh-button icon="add_circle_outline" circle @click="addSchedule"></oh-button>
             </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="日志列表">
+                <oh-button icon="event_note" circle @click="addSchedule"></oh-button>
+            </el-tooltip>
+
             <el-tooltip class="item" effect="dark" content="提醒">
                 <oh-button :icon="notify?'notifications_active':'notifications'" circle :class="{notify:notify}"
                            @click="notify = !notify"></oh-button>
-            </el-tooltip>
-            <el-tooltip class="item" effect="dark" content="更换主题" placement="top">
-                <oh-button icon="color_lens" circle @click="showTheme(true)"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="全屏" placement="top">
                 <oh-button :icon="fullscreenIcon" circle @click="toggleFullscreen"></oh-button>
             </el-tooltip>
             <el-dropdown trigger="click">
-                <oh-button icon="menu" circle></oh-button>
+                <oh-button icon="apps" circle></oh-button>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>
-                        <i class="el-icon-setting"></i>
-                        设置
+                    <el-dropdown-item @click.native="showTheme(true)">
+                        <i class="font-icons">palette</i>
+                        主题
                     </el-dropdown-item>
                     <el-dropdown-item>
-                        <i class="el-icon-printer"></i>
+                        <i class="font-icons">print</i>
                         打印
                     </el-dropdown-item>
                     <el-dropdown-item divided>
-                        <i class="el-icon-help"></i>
+                        <i class="font-icons">help</i>
                         帮助
                     </el-dropdown-item>
                 </el-dropdown-menu>
@@ -366,10 +367,10 @@
 
 
         .current-date {
-            font-size: 24px;
+            font-size: 20px;
             color: #333;
-            font-weight: bold;
-            margin: 0 16px;
+            //font-weight: bold;
+            margin: 0 4px;
         }
 
         .schedule-today {
