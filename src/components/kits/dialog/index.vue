@@ -1,13 +1,16 @@
 <template>
-    <div class="oh-dialog-wrapper" v-show="visible">
-        <div class="oh-dialog" :class="{open:visible}">
-            <div class="dialog-header" >
-                <slot class="header-extra" name="extra"></slot>
-                <oh-button circle icon="close" @click="close"></oh-button>
+    <div class="oh-dialog-wrapper">
+        <transition name="fadeIn">
+            <div class="oh-dialog" v-if="visible">
+                <div class="dialog-header">
+                    <slot class="header-extra" name="extra"></slot>
+                    <oh-button circle icon="close" @click="close"></oh-button>
+                </div>
+                <slot></slot>
+                <slot class="dialog-footer" name="footer"></slot>
             </div>
-            <slot></slot>
-            <slot class="dialog-footer" name="footer"></slot>
-        </div>
+        </transition>
+        <div class="mask" @click="close" v-if="visible"></div>
     </div>
 </template>
 
@@ -28,21 +31,12 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .oh-dialog-wrapper {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        margin: 0;
-        z-index: 999;
-        overflow: hidden;
-        background: rgba(0, 0, 0, .1);
-
         .oh-dialog {
-            position: relative;
-            margin: 25vh auto 0;
+            position: absolute;
+            left: 30%;
+            top: 25vh;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, .1);
             box-sizing: border-box;
@@ -50,15 +44,12 @@
             padding: 16px 16px;
             box-sizing: border-box;
             background: rgba(255, 255, 255, 1);
+            z-index: 1000;
 
             .dialog-header {
                 display: flex;
                 justify-content: flex-end;
                 margin-bottom: 16px;
-
-                .oh-button {
-
-                }
             }
 
             .dialog-footer {
@@ -66,20 +57,16 @@
                 justify-content: flex-end;
             }
         }
-
-        .open {
-            animation: open linear .2s;
-        }
-
-        @keyframes open {
-            from {
-                opacity: 0;
-                transform: scale(0);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .mask{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            left: 0;
+            top:0;
+            background: rgba(0,0,0,.5);
+            z-index: 999;
         }
     }
+
+
 </style>

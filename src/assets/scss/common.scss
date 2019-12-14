@@ -35,7 +35,7 @@ a:active {
 .fadeIn-enter,
 .fadeIn-leave-active {
   opacity: 0;
-  filter: blur(10px);
+  transform: scale(0);
 }
 
 .scaleIn-enter-active {
