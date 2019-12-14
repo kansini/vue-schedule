@@ -64,7 +64,7 @@
         }
     }
 </script>
-<style scoped lang="scss">
+<style lang="scss" scoped>
     #demo {
         width: 240px;
         height: 240px;

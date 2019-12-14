@@ -3,7 +3,7 @@
         <div class="oh-tab-item" v-for="(item,index) in tabs"
              :class="[{current:index == active},{notCurrent:index != active}]"
              :key="index"
-             @click="handleToTab(index)">
+             @click="handleToSwitch(index)">
             {{item}}
         </div>
     </div>
@@ -13,11 +13,21 @@
 <script>
     export default {
         name: "oh-tab",
-        props:['active','tabs'],
-        methods:{
-            handleToTab(index){
-                this.$emit('click',index)
+        props: ['tabs'],
+        computed:{
+            active: {
+                get() {
+                    return this.$store.state.schedule.currentViewIndex
+                },
+                set() {
+
+                }
             }
+        },
+        methods: {
+            handleToSwitch(currentViewIndex) {
+                this.$store.commit("schedule/SET_CURRENT_VIEW", {currentViewIndex})
+            },
         }
     }
 </script>
@@ -34,6 +44,7 @@
             font-size: 14px;
             //color: #999;
             font-weight: 300;
+            background: #fff;
             @include border_theme($border_theme1);
             border: 1px solid;
             box-sizing: border-box;

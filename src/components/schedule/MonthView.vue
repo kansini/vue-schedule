@@ -1,13 +1,13 @@
 <template>
     <div class="schedule-month-view">
-        <div class="calendar-week">
+        <div class="schedule-week">
             <div v-for="(item, index) in weekArr" :key="index" class="week-item">{{item}}</div>
         </div>
         <div class="schedule-view">
             <div v-for="(item, index) in visibleCalendar" :key="index" class="date-view"
                  :class="[{'current':isCurrentMonth(item.date)},
                  {'notCurrent':!isCurrentMonth(item.date)},
-                 {today:isToday(item.date)}]">
+                 {today:isToday(item.date)}]" @click="handleDay">
                 <span class="day" @click="jumpToDay(0)">{{item.day}}</span>
                 <div class="schedule-list">
                     <div class="schedule-list-item" v-for="(event,index) in item.events" :key="index">
@@ -94,13 +94,17 @@
                 //     x.clickDay = false;
                 // });
                 // this.$set(item, 'clickDay', true);
+            },
+            handleDay(item) {
+                this.$emit('handleDay', item);
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .schedule-month-view {
+
         .schedule-week {
             width: 100%;
             display: flex;
@@ -141,11 +145,6 @@
                 border-bottom: 1px solid #f1f1f1;
                 box-sizing: border-box;
                 cursor: pointer;
-
-                &:nth-child(7n + 6),
-                &:nth-child(7n) {
-                    @include listInfo_icon_theme($header-color-theme1);
-                }
 
                 .day {
                     display: inline-block;

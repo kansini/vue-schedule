@@ -92,7 +92,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
     .themeSelector-modal {
         position: absolute;
         background: rgba(255, 255, 255, .9);
@@ -129,7 +129,7 @@
             .active {
                 position: relative;
                 color: #fff;
-                border-radius: 12px;
+                border-radius: 40px;
 
                 &::before {
                     position: absolute;
@@ -144,16 +144,13 @@
             }
 
             li {
-                // width: 64px;
-                // margin-right: 16px;
 
                 div {
                     width: 40px;
                     height: 40px;
                     background: $header-color-theme1;
                     cursor: pointer;
-
-                    border-radius: 40px;
+                    border-radius: 8px;
                     opacity: .95;
                     transition: all ease .5s;
 

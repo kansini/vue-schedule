@@ -69,11 +69,11 @@
         &::before {
             content: attr(icon);
             font-family: 'Material Icons';
-            font-size: 22px;
+            font-size: 20px;
         }
 
         &:hover {
-            transform: scale(1.1);
+            //transform: scale(1.1);
             @include dropMenu_theme($dropMenu-color-theme1, $dropMenu-bg-theme1);
         }
     }

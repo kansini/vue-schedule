@@ -1,30 +1,23 @@
 <template>
     <div class="schedule-header">
-        <div class="schedule-header-item">
+        <div class="schedule-header-item" v-if="hasTitle">
             <div class="logo-icon">
                 <oh-animation id="icon-calendar" renderer="canvas"></oh-animation>
             </div>
-            <h2>VUE OH Schedule</h2>
+            <h2>OH SCHEDULE</h2>
         </div>
-        <div class="schedule-header-center">
-            <div class="toggle-view-tab">
-                <div class="toggle-view-tab-item" v-for="(item,index) in views"
-                     :class="[{current:index == currentViewIndex},{notCurrent:index != currentViewIndex}]"
-                     :key="index"
-                     @click="handleToSwitch(index)">
-                    {{item}}
-                </div>
-            </div>
+        <div class="schedule-header-center" v-if="hasTitle">
+            <oh-tab :tabs="views"></oh-tab>
         </div>
-        <div class="schedule-header-item">
+        <div class="schedule-header-item" >
             <div class="toggleDate" v-if="currentViewIndex === 0">
                 <div class="btn-prev" @click="handlePrevDay"></div>
-                <div class="current-date">{{this.time.year}}年{{this.time.month+1}}月{{this.time.day}}</div>
+                <div class="current-date">{{this.time.day}}日</div>
                 <div class="btn-next" @click="handleNextDay"></div>
             </div>
             <div class="toggleDate" v-if="currentViewIndex === 1">
                 <div class="btn-prev" @click="handlePrevWeek"></div>
-                <div class="current-date">{{this.time.month+1}}月{{this.time.day}}</div>
+                <div class="current-date">{{this.time.month+1}}月{{this.time.day}}日</div>
                 <div class="btn-next" @click="handleNextWeek"></div>
             </div>
             <div class="toggleDate" v-if="currentViewIndex === 2">
@@ -44,7 +37,7 @@
                 <oh-button icon="add_circle_outline" circle @click="addSchedule"></oh-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="日志列表">
-                <oh-button icon="event_note" circle @click="addSchedule"></oh-button>
+                <oh-button icon="event_note" circle @click="showList"></oh-button>
             </el-tooltip>
 
             <el-tooltip class="item" effect="dark" content="提醒">
@@ -61,7 +54,7 @@
                         <i class="font-icons">palette</i>
                         主题
                     </el-dropdown-item>
-                    <el-dropdown-item>
+                    <el-dropdown-item @click.native="doPrint">
                         <i class="font-icons">print</i>
                         打印
                     </el-dropdown-item>
@@ -87,6 +80,12 @@
                 isFullscreen: false,
                 fullscreenIcon: "fullscreen",
                 notify: false
+            }
+        },
+        props: {
+            hasTitle: {
+                type: Boolean,
+                default: true
             }
         },
         computed: {
@@ -179,8 +178,8 @@
             addSchedule() {
                 this.$emit('addSchedule');
             },
-            handleToSwitch(currentViewIndex) {
-                this.$store.commit("schedule/SET_CURRENT_VIEW", {currentViewIndex})
+            showList() {
+                this.$emit('showList');
             },
             toggleCurrentDate(currentDate) {
                 this.$store.commit("schedule/SET_CURRENT_DATE", {currentDate})
@@ -200,6 +199,16 @@
                     this.isFullScreen = false
                     this.fullscreenIcon = "fullscreen"
                 }
+            },
+            doPrint() {
+                let bdhtml = window.document.body.innerHTML;
+                let sprnstr = "<!--startprint-->"; //开始打印标识字符串有17个字符
+                let eprnstr = "<!--endprint-->"; //结束打印标识字符串
+                let prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17); //从开始打印标识之后的内容
+                prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+                window.document.body.innerHTML = prnhtml; //把需要打印的指定内容赋给body.innerHTML
+                window.print(); //调用浏览器的打印功能打印指定区域
+                window.document.body.innerHTML = bdhtml; // 最后还原页面
             }
         }
     }
@@ -215,9 +224,9 @@
         justify-content: space-between;
         padding: 16px;
         box-sizing: border-box;
-        border-bottom: 1px solid #f1f1f1;
-        background: rgba(255, 255, 255, .85);
-        box-shadow: 0 20px 40px rgba(255, 255, 255, 1);
+        // border-bottom: 1px solid #f1f1f1;
+        background: rgba(255, 255, 255, .9);
+        box-shadow: 0 0px 20px rgba(0, 0, 0, .03);
         z-index: 999;
 
         .schedule-header-item {

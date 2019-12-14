@@ -1,13 +1,15 @@
 import ohButton from './button'
 import theme from './theme'
 import ohAnimation from './animation'
-//import ohTab from './tab'
+import ohTab from './tab'
+import ohDialog from './dialog'
 
 const components = {
     ohButton,
     theme,
     ohAnimation,
-    //ohTab
+    ohTab,
+    ohDialog
 }
 
 const install = (Vue, opts = {}) => {
