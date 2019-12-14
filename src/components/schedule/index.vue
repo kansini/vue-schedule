@@ -9,7 +9,7 @@
                 <yearView v-if="currentViewIndex == 3" :key="3"></yearView>
             </transition-group>
         </div>
-        <oh-dialog :visible.sync="dialogAddSchedule">
+        <oh-dialog :visible.sync="dialogAddSchedule" :close-on-click="true">
             <schedule-form></schedule-form>
             <div slot="extra" class="header-extra">
                 <oh-button circle icon="edit"></oh-button>
