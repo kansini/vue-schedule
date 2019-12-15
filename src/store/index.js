@@ -6,9 +6,6 @@ import theme from './modules/theme'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {},
-    mutations: {},
-    actions: {},
     modules: {
         schedule,
         theme

@@ -1,7 +1,7 @@
 <template>
     <div id="home">
         <schedule/>
-        <theme />
+
     </div>
 </template>
 

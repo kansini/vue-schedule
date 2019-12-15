@@ -9,8 +9,8 @@
                 <yearView v-if="currentViewIndex == 3" :key="3"></yearView>
             </transition-group>
         </div>
-        <oh-dialog :visible.sync="dialogAddSchedule" :close-on-click="true">
-            <schedule-form></schedule-form>
+        <oh-dialog :visible.sync="dialogAddSchedule" width="480px">
+            <schedule-form :form="form"></schedule-form>
             <div slot="extra" class="header-extra">
                 <oh-button circle icon="edit"></oh-button>
                 <oh-button circle icon="delete"></oh-button>
@@ -21,6 +21,7 @@
                 <oh-button type="primary" @click="dialogAddSchedule = false">保存</oh-button>
             </div>
         </oh-dialog>
+        <theme />
     </div>
 </template>
 
@@ -45,7 +46,17 @@
         data() {
             return {
                 dialogAddSchedule: false,
-                drawer: false
+                drawer: false,
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '2020-01-02',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                }
             }
         },
         computed: {

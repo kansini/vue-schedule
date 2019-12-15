@@ -146,6 +146,12 @@
                 box-sizing: border-box;
                 cursor: pointer;
 
+                &:nth-child(7n+6),
+                &:nth-child(7n) {
+                    @include listInfo_icon_theme($header-color-theme1);
+                }
+
+
                 .day {
                     display: inline-block;
                     width: 32px;
@@ -187,14 +193,14 @@
                         }
 
                         &::before {
-                            // content: '';
+                            content: '';
                             position: absolute;
                             top: 4px;
                             left: 0px;
                             width: 8px;
                             height: 8px;
                             border-radius: 8px;
-                            // box-shadow: 0 0 0 3px $red-2;
+                            box-shadow: 0 0 0 3px $red-2;
                             background: $red-6;
                         }
                     }
@@ -204,6 +210,24 @@
             .current {
                 background: #fff;
                 transition: all ease .4s;
+
+                &::before {
+                    position: absolute;
+                    left: calc(50% - 16px);
+                    top: calc(50% - 16px);
+                    content: 'add';
+                    font-family: 'Material Icons';
+                    font-size: 32px;
+                    transform: scale(0);
+                    opacity: 0;
+                    @include listInfo_icon_theme($header-color-theme1);
+                    transition: all ease .6s;
+                }
+
+                &:hover::before {
+                    transform: scale(1);
+                    opacity: 1;
+                }
 
                 &:hover {
                     box-shadow: 0 0 20px rgba(0, 0, 0, .15);
@@ -223,7 +247,7 @@
                 background-image: linear-gradient(45deg, rgba(0, 0, 0, .01) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .01) 75%, transparent 75%, transparent);
                 background-size: 20px 20px;
                 color: #ccc;
-                cursor: not-allowed;
+                pointer-events: none;
             }
 
             .today {

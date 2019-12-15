@@ -1,7 +1,7 @@
 <template>
     <div class="oh-dialog-wrapper">
-        <transition name="fadeIn">
-            <div class="oh-dialog" v-if="visible">
+        <transition :name="ani">
+            <div class="oh-dialog" v-if="visible" :style="{width:width}">
                 <div class="dialog-header">
                     <slot class="header-extra" name="extra"></slot>
                     <oh-button circle icon="close" @click="close"></oh-button>
@@ -26,6 +26,14 @@
             closeOnClick: {
                 type: Boolean,
                 default: true
+            },
+            ani: {
+                type: String,
+                default: "fadeIn"
+            },
+            width: {
+                type: String,
+                default: "50%"
             }
 
         },
@@ -51,8 +59,7 @@
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, .1);
             box-sizing: border-box;
-            width: 40%;
-            padding: 16px 16px;
+            padding: 16px 24px;
             box-sizing: border-box;
             background: rgba(255, 255, 255, 1);
             z-index: 999;
@@ -61,7 +68,7 @@
             .dialog-header {
                 display: flex;
                 justify-content: flex-end;
-                margin-bottom: 16px;
+                //margin-bottom: 16px;
             }
 
             .dialog-footer {
@@ -77,7 +84,6 @@
             left: 0;
             top: 0;
             background: rgba(0, 0, 0, .4);
-
         }
     }
 
