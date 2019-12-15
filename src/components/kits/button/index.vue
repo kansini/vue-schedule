@@ -51,7 +51,6 @@
         line-height: 40px;
         box-sizing: border-box;
         border-radius: 4px;
-        color: #333;
         transition: all linear .4s;
         cursor: pointer;
 
@@ -65,6 +64,7 @@
         padding: 0;
         width: 40px;
         border-radius: 20px;
+        background: transparent;
 
         &::before {
             content: attr(icon);

@@ -1,17 +1,22 @@
 <template>
-    <div class="oh-input" :class="[{inputFocus:currentFocus},{large:large}]">
+    <div class="oh-input">
         <div class="clear">
             <oh-button circle icon="close" v-show="showClear"></oh-button>
         </div>
-        <input :type="type" :placeholder="label"
-               :readonly="readonly"
-               @focus="handleToFocus"
-               @blur="handleToBlur"
-               @input="handleToInput"
-               @change="handleToChange"
-               v-focus="autoFocus"
-               ref="input"
-        >
+        <div class="input-item" :class="[{inputFocus:currentFocus},{large:large}]">
+            <div class="input-icon" v-if="icon">
+                <i class="font-icons">{{icon}}</i>
+            </div>
+            <input :type="type" :placeholder="label"
+                   :readonly="readonly"
+                   @focus="handleToFocus"
+                   @blur="handleToBlur"
+                   @input="handleToInput"
+                   @change="handleToChange"
+                   v-focus="autoFocus"
+                   ref="input"
+            >
+        </div>
     </div>
 </template>
 
@@ -39,7 +44,7 @@
                 type: Boolean,
                 default: false
             },
-            value: {},
+            icon: {},
             autoFocus: {
                 type: Boolean,
                 default: false
@@ -82,19 +87,18 @@
                 this.currentFocus = true
                 this.$emit('focus', e.target.value)
             },
-            clear(e){
+            clear(e) {
                 this.$emit('clear', e.target.value)
             }
         }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .oh-input {
         position: relative;
         width: 100%;
         height: 40px;
-        line-height: 40px;
         margin-bottom: 16px;
 
         .clear {
@@ -109,52 +113,70 @@
 
         }
 
-        input {
-            border: none;
-            outline: none;
-            width: 100%;
+        .input-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
             height: 40px;
-            line-height: 40px;
-            font-size: 14px;
-            color: #666;
-            border-bottom: 1px solid #f1f1f1;
 
-            &::-webkit-input-placeholder {
-                color: #999;
+            .input-icon {
+                height: 40px;
+                line-height: 34px;
+                color: #666;
+                font-size: 22px;
+                margin-right: 16px;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                background: transparent;
+                width: 100%;
+                height: 40px;
+                font-size: 13px;
+                color: #333;
+                border-bottom: 1px solid #f1f1f1;
+
+                &::-webkit-input-placeholder {
+                    color: #999;
+                }
+            }
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 2px;
+                @include background_theme($background-theme1);
+                left: 0;
+                bottom: -1px;
+                transform: scale(0);
+                transform-origin: center;
+                transition: all ease .4s;
+            }
+
+
+        }
+
+        .large {
+            height: 48px;
+
+            &::after {
+                bottom: -8px;
+            }
+
+            input {
+                font-size: 20px;
+                font-weight: 400;
+                height: 48px;
+                line-height: 48px;
             }
         }
 
-
-        &::after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            height: 2px;
-            @include background_theme($background-theme1);
-            left: 0;
-            bottom: -1px;
-            transform: scale(0);
-            transform-origin: center;
-            transition: all ease .4s;
-        }
-    }
-
-    .large {
-        height: 48px;
-        line-height: 48px;
-
-        input {
-            font-size: 20px;
-            font-weight: 400;
-            height: 48px;
-            line-height: 48px;
-        }
-    }
-
-
-    .inputFocus {
-        &::after {
-            transform: scale(1);
+        .inputFocus {
+            &::after {
+                transform: scale(1);
+            }
         }
     }
 
