@@ -9,3 +9,5 @@
 ![Image text](https://github.com/kansini/vue-schedule/blob/master/public/screenshot/screenshot04.png?raw=true)
 #日视图
 ![Image text](https://github.com/kansini/vue-schedule/blob/master/public/screenshot/screenshot05.png?raw=true)
+#新增日志
+![Image text](https://github.com/kansini/vue-schedule/blob/master/public/screenshot/screenshot06.png?raw=true)
