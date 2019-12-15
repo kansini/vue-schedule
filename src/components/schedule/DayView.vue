@@ -32,8 +32,8 @@
                 currentDay:
                     {
                         isToday: true,
-                        week: '周四',
-                        day: '12'
+                        week: '周日',
+                        day: '15'
                     }
             }
         },
