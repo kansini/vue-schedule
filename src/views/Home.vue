@@ -1,7 +1,6 @@
 <template>
     <div id="home">
         <schedule/>
-
     </div>
 </template>
 

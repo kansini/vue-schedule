@@ -29,19 +29,10 @@
 	letter-spacing: normal;
 	word-wrap: normal;
 	white-space: nowrap;
-	/* Preferred icon size */
 	vertical-align: middle;
 	direction: ltr;
 }
 
-.font-icons {
-	display: inline-block;
-	text-align: center;
-}
 
-.font-icons::before {
-	display: block !important;
-	width: 24px;
-	height: 24px;
-}
+
 

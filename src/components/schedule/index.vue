@@ -10,10 +10,8 @@
             </transition-group>
         </div>
         <oh-dialog :visible.sync="dialogAddSchedule" width="520px" title="新增日志" :close-on-click="false">
-            <schedule-form :form="form"></schedule-form>
+            <schedule-form ></schedule-form>
             <div slot="extra" class="header-extra">
-                <oh-button circle icon="edit"></oh-button>
-                <oh-button circle icon="delete"></oh-button>
                 <oh-button circle icon="more_vert"></oh-button>
             </div>
             <div slot="footer" class="dialog-footer">
@@ -47,16 +45,6 @@
             return {
                 dialogAddSchedule: false,
                 drawer: false,
-                form: {
-                    name: '',
-                    region: '',
-                    date1: '2020-01-02',
-                    date2: '',
-                    delivery: false,
-                    type: [],
-                    resource: '',
-                    desc: ''
-                }
             }
         },
         computed: {

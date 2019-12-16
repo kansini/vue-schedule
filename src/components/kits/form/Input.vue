@@ -4,17 +4,17 @@
             <oh-button circle icon="close" v-show="showClear"></oh-button>
         </div>
         <div class="input-item" :class="[{inputFocus:currentFocus},{large:large}]">
-            <div class="input-icon" v-if="icon">
+            <div class="input-icon" v-if="icon" @click="clear('')">
                 <i class="font-icons">{{icon}}</i>
             </div>
             <input :type="type" :placeholder="label"
+                   :value="val"
                    :readonly="readonly"
                    @focus="handleToFocus"
                    @blur="handleToBlur"
-                   @input="handleToInput"
-                   @change="handleToChange"
+                   @input="handleToInput($event)"
+                   @change="handleToChange($event)"
                    v-focus="autoFocus"
-                   ref="input"
             >
         </div>
     </div>
@@ -48,7 +48,12 @@
             autoFocus: {
                 type: Boolean,
                 default: false
-            }
+            },
+            val:{}
+        },
+        model:{
+            prop:['val'],
+            event:'input'
         },
         data() {
             return {
@@ -99,7 +104,7 @@
         position: relative;
         width: 100%;
         height: 40px;
-        margin-bottom: 16px;
+
 
         .clear {
             position: absolute;
@@ -133,7 +138,7 @@
                 background: transparent;
                 width: 100%;
                 height: 40px;
-                font-size: 13px;
+                font-size: 14px;
                 color: #333;
                 border-bottom: 1px solid #f1f1f1;
 

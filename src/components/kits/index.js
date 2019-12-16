@@ -3,8 +3,8 @@ import theme from './theme'
 import ohAnimation from './animation'
 import ohTab from './tab'
 import ohDialog from './dialog'
-import ohInput from './formItem/Input'
-import ohDatePicker from './formItem/DatePicker'
+import ohInput from './form/Input'
+import ohFormItem from './form/FormItem'
 
 const components = {
     ohButton,
@@ -13,7 +13,7 @@ const components = {
     ohTab,
     ohDialog,
     ohInput,
-    ohDatePicker
+    ohFormItem
 
 }
 

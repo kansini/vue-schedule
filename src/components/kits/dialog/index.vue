@@ -108,7 +108,7 @@
             .dialog-footer {
                 display: flex;
                 justify-content: flex-end;
-                padding: 0 24px 16px 24px;
+                padding:16px 24px;
                 box-sizing: border-box;
             }
         }
@@ -119,7 +119,7 @@
             height: 100%;
             left: 0;
             top: 0;
-            background: rgba(0, 0, 0, .4);
+            background: rgba(255, 255, 255, .6);
         }
     }
 
