@@ -10,11 +10,11 @@
                  {today:isToday(item.date)}]" @click="handleDay">
                 <span class="day" @click="jumpToDay(0)">{{item.day}}</span>
                 <div class="schedule-list">
-                    <div class="schedule-list-item" v-for="(event,index) in item.events" :key="index">
-                        <div v-if="event && index < 3">
-                            <span>{{event.title}}</span>
-                            <span>{{event.time}}</span>
-                        </div>
+                    <div class="schedule-list-item">
+                        <template>
+                            <span>{{item.event.title}}</span>
+                            <span>{{item.event.startTime}}</span>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -67,6 +67,10 @@
                         year: year,
                         month: month + 1,
                         day: new Date(startTime + i * 24 * 60 * 60 * 1000).getDate(),
+                        event: {
+                            title: "",
+                            startTime: ""
+                        }
                     })
                 }
                 return calendarArr
@@ -193,7 +197,7 @@
                         }
 
                         &::before {
-                            content: '';
+                            //content: '';
                             position: absolute;
                             top: 4px;
                             left: 0px;

@@ -8,11 +8,9 @@
         </div>
         <div class="schedule-day-content">
             <div class="schedule-day-hour-list">
-                <div class="hour">
-
-                </div>
+                <div class="hour"></div>
                 <div class="hour" v-for="index in 23">
-                    <div class="hour-text">{{index}}点</div>
+                    <div class="hour-text">{{index | time}}点</div>
                 </div>
             </div>
             <div class="schedule-day-list">
@@ -36,7 +34,7 @@
                         day: '15'
                     }
             }
-        },
+        }
     }
 </script>
 
@@ -53,6 +51,7 @@
                 width: 40px;
                 padding: 0 8px;
                 text-align: center;
+
                 .week {
                     font-size: 14px;
                     color: #999;
@@ -94,7 +93,7 @@
             .schedule-day-hour-list {
                 font-size: 12px;
                 color: #999;
-                width: 48px;
+                width: 80px;
 
                 .hour {
                     height: 48px;
@@ -107,7 +106,7 @@
             }
 
             .schedule-day-list {
-                width: calc(100% - 48px);
+                width: calc(100% - 80px);
                 font-size: 14px;
                 color: #ccc;
                 border-left: 1px solid #f1f1f1;
