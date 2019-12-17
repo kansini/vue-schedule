@@ -38,6 +38,31 @@ a:active {
   transform: scale(0);
 }
 
+.leftIn-enter-active {
+  transition: all ease .4s;
+  transform-origin: left;
+}
+
+.rightIn-enter-active{
+  transition: all ease .4s;
+  transform-origin: right;
+}
+.leftIn-leave-active,
+.rightIn-leave-active  {
+  transition: all ease .6s;
+}
+
+.leftIn-enter,
+.rightIn-enter {
+  transform: scaleX(0);
+}
+.leftIn-leave-active,
+.rightIn-leave-active {
+  opacity: 0;
+  filter:blur(4px);
+}
+
+
 .scaleIn-enter-active {
   transition: all ease .5s;
 }

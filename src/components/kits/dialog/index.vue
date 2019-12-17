@@ -30,7 +30,7 @@
             },
             closeOnClick: {
                 type: Boolean,
-                default: true
+                default: false
             },
             ani: {
                 type: String,
@@ -130,7 +130,7 @@
             height: 100%;
             left: 0;
             top: 0;
-            background: rgba(255, 255, 255, .6);
+            background: rgba(255, 255, 255, 0);
         }
     }
 

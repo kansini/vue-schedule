@@ -11,7 +11,8 @@
         </div>
         <oh-dialog :visible.sync="showDialog" :width="`${dialogWidth}px`" :height="`${dialogHeight}px`" title="新增日志"
                    :left="dialogLeft"
-                   :top="dialogTop" ref="dialog">
+                   :top="dialogTop"
+                   :ani="ani">
             <schedule-form></schedule-form>
             <div slot="extra" class="header-extra">
                 <oh-button circle icon="more_vert"></oh-button>
@@ -50,7 +51,8 @@
                 dialogLeft: 16,
                 dialogTop: 16,
                 dialogWidth: 480,
-                dialogHeight: 496
+                dialogHeight: 496,
+                ani:"leftIn"
             }
         },
         computed: {
@@ -78,9 +80,11 @@
                 let y = fulHeight - rect.y
                 if (x > this.dialogWidth) {
                     this.dialogLeft = rect.x + rect.width
+                    this.ani = "leftIn"
 
                 } else {
                     this.dialogLeft = rect.x - this.dialogWidth
+                    this.ani = "rightIn"
                 }
                 if (y > this.dialogHeight) {
                     this.dialogTop = rect.y
