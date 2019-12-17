@@ -4,7 +4,7 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import kits from '@/components/kits'
-import '@/utils/filter'
+import '@/filter/time.js'
 
 Vue.use(kits)
 

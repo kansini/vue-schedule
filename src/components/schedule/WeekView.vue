@@ -14,7 +14,7 @@
             <div class="schedule-week-hour-list">
                 <div class="hour"></div>
                 <div class="hour" v-for="index in 23">
-                    <div class="hour-text">{{index | time}}点</div>
+                    <div class="hour-text">{{index | time}}</div>
                 </div>
             </div>
             <div class="schedule-week-day-list">
