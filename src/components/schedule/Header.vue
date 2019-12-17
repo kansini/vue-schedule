@@ -33,9 +33,9 @@
             <el-tooltip class="item" effect="dark" placement="top" content="返回当前">
                 <oh-button icon="restore" rotate circle @click="handleToday"></oh-button>
             </el-tooltip>
-            <el-tooltip class="item" effect="dark" content="新增日志">
-                <oh-button icon="add_circle_outline" circle @click="addSchedule"></oh-button>
-            </el-tooltip>
+<!--            <el-tooltip class="item" effect="dark" content="新增日志">-->
+<!--                <oh-button icon="add_circle_outline" circle @click="addSchedule"></oh-button>-->
+<!--            </el-tooltip>-->
             <el-tooltip class="item" effect="dark" content="日志列表">
                 <oh-button icon="event_note" circle @click="showList"></oh-button>
             </el-tooltip>

@@ -5,21 +5,23 @@
             <transition-group name="toggle-view" tag="div">
                 <dayView v-if="currentViewIndex == 0" :key="0"></dayView>
                 <weekView v-if="currentViewIndex == 1" :key="1"></weekView>
-                <monthView v-if="currentViewIndex == 2 " :key="2" @handleDay="dialogAddSchedule = true"></monthView>
+                <monthView v-if="currentViewIndex == 2 " :key="2" @handleDay="clickDay"></monthView>
                 <yearView v-if="currentViewIndex == 3" :key="3"></yearView>
             </transition-group>
         </div>
-        <oh-dialog :visible.sync="dialogAddSchedule" width="520px" title="新增日志" :close-on-click="false">
-            <schedule-form ></schedule-form>
+        <oh-dialog :visible.sync="showDialog" :width="`${dialogWidth}px`" :height="`${dialogHeight}px`" title="新增日志"
+                   :left="dialogLeft"
+                   :top="dialogTop" ref="dialog">
+            <schedule-form></schedule-form>
             <div slot="extra" class="header-extra">
                 <oh-button circle icon="more_vert"></oh-button>
             </div>
             <div slot="footer" class="dialog-footer">
-                <oh-button type="flat" @click="dialogAddSchedule = false">取消</oh-button>
-                <oh-button type="primary" @click="dialogAddSchedule = false">保存</oh-button>
+                <oh-button type="flat" @click="showDialog = false">取消</oh-button>
+                <oh-button type="primary" @click="showDialog = false">保存</oh-button>
             </div>
         </oh-dialog>
-        <theme />
+        <theme/>
     </div>
 </template>
 
@@ -43,8 +45,12 @@
         },
         data() {
             return {
-                dialogAddSchedule: false,
+                showDialog: false,
                 drawer: false,
+                dialogLeft: 16,
+                dialogTop: 16,
+                dialogWidth: 480,
+                dialogHeight: 496
             }
         },
         computed: {
@@ -59,12 +65,35 @@
         },
         methods: {
             newSchedule() {
-                this.dialogAddSchedule = true
+                this.showDialog = true
             },
             showScheduleList() {
                 this.drawer = true
-            }
+            },
+            clickDay(rect) {
+                this.showDialog = true
+                let fullWidth = document.documentElement.clientWidth
+                let fulHeight = document.documentElement.clientHeight
+                let x = fullWidth - rect.x - rect.width - 40
+                let y = fulHeight - rect.y
+                if (x > this.dialogWidth) {
+                    this.dialogLeft = rect.x + rect.width
 
+                } else {
+                    this.dialogLeft = rect.x - this.dialogWidth
+                }
+                if (y > this.dialogHeight) {
+                    this.dialogTop = rect.y
+                } else if (y < rect.height) {
+                    this.dialogTop = rect.y - this.dialogHeight
+                } else if (rect.y < this.dialogHeight) {
+                    this.dialogTop = 16
+                } else {
+                    this.dialogTop = rect.y - this.dialogHeight + rect.height
+                }
+                // console.log(y)
+                // console.log(dialogHeight)
+            }
         }
     }
 </script>

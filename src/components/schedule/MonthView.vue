@@ -8,7 +8,7 @@
                  :class="[{'current':isCurrentMonth(item.date)},
                  {'notCurrent':!isCurrentMonth(item.date)},
                  {today:isToday(item.date)}]" @click="handleDay">
-                <span class="day" @click="jumpToDay(0)">{{item.day}}</span>
+                <span class="day" @click="jumpToDay(0)">{{item.day | day}}</span>
                 <div class="schedule-list">
                     <div class="schedule-list-item">
                         <template>
@@ -99,8 +99,9 @@
                 // });
                 // this.$set(item, 'clickDay', true);
             },
-            handleDay(item) {
-                this.$emit('handleDay', item);
+            handleDay(e) {
+                const rect = e.target.getBoundingClientRect()//获取点击的dom的位置
+                this.$emit('handleDay', rect);
             }
         }
     }

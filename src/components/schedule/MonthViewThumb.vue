@@ -9,7 +9,7 @@
                  {'notCurrent':!isCurrentMonth(item.date)},
                  {today:isToday(item.date)}]"
                  v-for="(item,index) in visibleCalendar">
-                <span @click="jumpToDay(0)">{{item.day}}</span>
+                <span @click="jumpToDay(0)">{{item.day | day}}</span>
             </div>
         </div>
     </div>

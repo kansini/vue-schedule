@@ -6,7 +6,7 @@
             </div>
             <div class="day-list">
                 <div class="day-list-item" :class="[{today:isToday(item.date)},{notToday:!isToday(item.date)}]"
-                     v-for="(item,index) in visibleCalendar" :key="index" @click="jumpToDay(0)">{{item.day}}
+                     v-for="(item,index) in visibleCalendar" :key="index" @click="jumpToDay(0)">{{item.day | day}}
                 </div>
             </div>
         </div>

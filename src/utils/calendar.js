@@ -19,14 +19,8 @@ const month = (month) => {
 }
 
 
-const formatDate = (date) => {
-    date = Number(date);
-    return date < 10 ? `0${date}` : date;
-}
-
 export {
     getNewDate,
     getDate,
     month,
-    formatDate,
 }

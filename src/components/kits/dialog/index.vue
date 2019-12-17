@@ -1,7 +1,7 @@
 <template>
     <div class="oh-dialog-wrapper">
         <transition :name="ani">
-            <div class="oh-dialog" v-if="visible" :style="{width:width}">
+            <div class="oh-dialog" v-if="visible" :style="[{width:width},{height:height},{left:`${left}px`},{top:`${top}px`}]">
                 <div class="dialog-header">
                     <div class="header-title">{{title}}</div>
                     <div class="header-options">
@@ -40,6 +40,18 @@
                 type: String,
                 default: "50%"
             },
+            height: {
+                type: String,
+                default: "496"
+            },
+            left: {
+                type: Number,
+                default: 16
+            },
+            top: {
+                type: Number,
+                default: 16
+            },
             title: {
                 type: String,
                 default: ""
@@ -63,8 +75,7 @@
         z-index: 1000;
 
         .oh-dialog {
-            position: relative;
-            margin: 25vh auto 0;
+            position: absolute;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, .1);
             box-sizing: border-box;
