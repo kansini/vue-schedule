@@ -4,7 +4,7 @@
             <div class="logo-icon">
                 <oh-animation id="icon-calendar" renderer="canvas"></oh-animation>
             </div>
-            <h2>OH SCHEDULE V0.0.5</h2>
+            <h2>SCHEDULE V0.1.0</h2>
         </div>
         <div class="schedule-header-center" v-if="hasTitle">
             <oh-tab :tabs="views"></oh-tab>

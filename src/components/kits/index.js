@@ -3,8 +3,10 @@ import theme from './theme'
 import ohAnimation from './animation'
 import ohTab from './tab'
 import ohDialog from './dialog'
-import ohInput from './form/Input'
 import ohFormItem from './form/FormItem'
+import ohInput from './form/Input'
+import ohSwitch from './form/Switch'
+
 
 const components = {
     ohButton,
@@ -13,8 +15,8 @@ const components = {
     ohTab,
     ohDialog,
     ohInput,
-    ohFormItem
-
+    ohFormItem,
+    ohSwitch
 }
 
 const install = (Vue, opts = {}) => {

@@ -1,24 +1,24 @@
 <template>
     <div class="schedule-form">
         <form action="" v-model="form">
-            <oh-form-item>
-                <oh-input label="请添加日志标题" large v-model="form.name" auto-focus icon="title"/>
+            <oh-form-item icon="title">
+                <oh-input placeholder="请添加日志标题" large v-model="form.name" auto-focus clearable/>
             </oh-form-item>
-            <oh-form-item>
-                <oh-input label="开始日期" v-model="startDate" icon="access_time" readonly/>
-                <oh-input label="结束日期" v-model="startDate" icon="remove" readonly/>
+            <oh-form-item icon="access_time">
+                <oh-input placeholder="开始日期" v-model="startDate"/>
+                <oh-input placeholder="结束日期" v-model="startDate"/>
             </oh-form-item>
-            <oh-form-item>
-                <oh-input label="添加邀请对象" v-model="form.inviter" icon="people"/>
+            <oh-form-item icon="people">
+                <oh-input placeholder="添加邀请对象" v-model="form.inviter" clearable/>
             </oh-form-item>
-            <oh-form-item>
-                <oh-input label="添加地点" v-model="form.date1" icon="location_on" disabled/>
+            <oh-form-item icon="location_on">
+                <oh-input placeholder="添加地点" v-model="form.date1"/>
             </oh-form-item>
-            <oh-form-item>
-                <oh-input label="设置提醒" v-model="form.date1" icon="notifications_active"/>
+            <oh-form-item icon="notifications" divider>
+                <ohSwitch label="开启提醒" v-model="form.isNotify" @click.native="aaa"></ohSwitch>
             </oh-form-item>
-            <oh-form-item>
-                <oh-input label="添加说明" v-model="form.date1" icon="subject"/>
+            <oh-form-item icon="subject">
+                <oh-input placeholder="添加说明" type="textarea" v-model="form.date1" clearable/>
             </oh-form-item>
         </form>
     </div>
@@ -27,12 +27,11 @@
 <script>
     export default {
         name: "ScheduleForm",
-        props:['form'],
+        props: ['form'],
         data() {
-            return {
-            }
+            return {}
         },
-        computed:{
+        computed: {
             startDate: {
                 get() {
                     return this.$store.state.schedule.currentDay
@@ -42,6 +41,13 @@
                 }
             }
 
+        },
+        methods: {
+            aaa() {
+                this.$nextTick(() => {
+                  //  console.log(this.form.isNotify)
+                })
+            }
         }
     }
 </script>

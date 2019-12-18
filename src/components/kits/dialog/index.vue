@@ -1,7 +1,8 @@
 <template>
     <div class="oh-dialog-wrapper">
         <transition :name="ani">
-            <div class="oh-dialog" v-if="visible" :style="[{width:width},{height:height},{left:`${left}px`},{top:`${top}px`}]">
+            <div class="oh-dialog" v-if="visible"
+                 :style="[{width:width},{height:height},{left:`${left}px`},{top:`${top}px`}]">
                 <div class="dialog-header">
                     <div class="header-title">{{title}}</div>
                     <div class="header-options">
@@ -90,13 +91,16 @@
                 justify-content: space-between;
                 box-sizing: border-box;
                 @include header_theme($header-color-theme1);
-                .oh-button{
+
+                .oh-button {
                     color: #fff;
-                    &:hover{
-                        background: rgba(255,255,255,.2);
+
+                    &:hover {
+                        background: rgba(255, 255, 255, .2);
                     }
                 }
-                .header-title{
+
+                .header-title {
                     height: 40px;
                     line-height: 40px;
                     width: 50%;
@@ -107,19 +111,22 @@
                     font-weight: 600;
                     color: #fff;
                 }
-                .header-options{
+
+                .header-options {
                     display: flex;
                     justify-content: flex-end;
                 }
             }
-            .dialog-content{
-                padding: 8px 24px 0 24px;
+
+            .dialog-content {
+                padding: 16px 16px 0;
                 box-sizing: border-box;
             }
+
             .dialog-footer {
                 display: flex;
                 justify-content: flex-end;
-                padding:16px 24px;
+                padding: 16px 24px;
                 box-sizing: border-box;
             }
         }
@@ -130,7 +137,7 @@
             height: 100%;
             left: 0;
             top: 0;
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255, 255, 255, .5);
         }
     }
 

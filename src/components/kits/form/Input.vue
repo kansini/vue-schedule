@@ -1,13 +1,10 @@
 <template>
     <div class="oh-input">
-        <div class="clear">
+        <div class="clear" v-if="clearable">
             <oh-button circle icon="close" v-if="showClear"  @click="clear"></oh-button>
         </div>
         <div class="input-item" :class="[{inputFocus:currentFocus},{large:large}]">
-            <div class="input-icon" v-if="icon">
-                <i class="font-icons">{{icon}}</i>
-            </div>
-            <input :type="type" :placeholder="label"
+            <input :type="type" :placeholder="placeholder"
                    :value="val"
                    :readonly="readonly"
                    :disabled="disabled"
@@ -26,7 +23,7 @@
     export default {
         name: "oh-input",
         props: {
-            label: {
+            placeholder: {
                 type: String,
                 default: ""
             },
@@ -46,8 +43,11 @@
                 type: Boolean,
                 default: false
             },
-            icon: {},
             autoFocus: {
+                type: Boolean,
+                default: false
+            },
+            clearable: {
                 type: Boolean,
                 default: false
             },
@@ -142,13 +142,6 @@
             align-items: center;
             height: 40px;
 
-            .input-icon {
-                height: 40px;
-                line-height: 34px;
-                color: #666;
-                font-size: 22px;
-                margin-right: 8px;
-            }
 
             input {
                 border: none;
@@ -158,7 +151,7 @@
                 height: 40px;
                 font-size: 14px;
                 color: #333;
-                padding-left: 8px;
+               // padding-left: 8px;
                 box-sizing: border-box;
                 border-bottom: 1px solid #f1f1f1;
 
@@ -171,6 +164,7 @@
                 color: #ccc;
                 background: #fafafa;
                 border-bottom: 1px solid #fafafa;
+                cursor: not-allowed;
             }
 
             &::after {
@@ -182,25 +176,25 @@
                 left: 0;
                 bottom: -1px;
                 transform: scale(0);
-                transform-origin: left;
-                transition: all ease .6s;
+                transform-origin: center;
+                transition: all ease .5s;
             }
 
 
         }
 
         .large {
-            height: 48px;
+            //height: 48px;
 
             &::after {
-                bottom: -8px;
+               // bottom: -8px;
             }
 
             input {
                 font-size: 20px;
                 font-weight: 400;
-                height: 48px;
-                line-height: 48px;
+               // height: 48px;
+               // line-height: 48px;
             }
         }
 

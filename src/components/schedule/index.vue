@@ -59,6 +59,7 @@
                 form: {
                     name: '',
                     region: '',
+                    isNotify: false,
                     date1: '',
                     date2: '',
                     inviter: '',
