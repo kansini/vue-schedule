@@ -101,7 +101,8 @@
             },
             handleDay(e) {
                 const rect = e.target.getBoundingClientRect()//获取点击的dom的位置
-                this.$emit('handleDay', rect);
+                const date = e.target
+                this.$emit('handleDay', rect, date);
             }
         }
     }

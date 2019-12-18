@@ -19,7 +19,7 @@
             </div>
             <div class="schedule-week-day-list">
                 <div class="hour" v-for="index in 24">
-                    <div class="day" v-for="index in 7"></div>
+                    <div class="day" v-for="index in 7" @click="handleHour"></div>
                 </div>
             </div>
         </div>
@@ -80,6 +80,10 @@
             },
             jumpToDay(currentViewIndex) {
                 this.$store.commit("schedule/SET_CURRENT_VIEW", {currentViewIndex})
+            },
+            handleHour(e){
+                const rect = e.target.getBoundingClientRect()//获取点击的dom的位置
+                this.$emit('handleHour', rect);
             }
         }
     }

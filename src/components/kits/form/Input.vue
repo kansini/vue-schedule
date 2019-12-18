@@ -1,20 +1,22 @@
 <template>
     <div class="oh-input">
         <div class="clear">
-            <oh-button circle icon="close" v-show="showClear"></oh-button>
+            <oh-button circle icon="close" v-if="showClear"  @click="clear"></oh-button>
         </div>
         <div class="input-item" :class="[{inputFocus:currentFocus},{large:large}]">
-            <div class="input-icon" v-if="icon" @click="clear('')">
+            <div class="input-icon" v-if="icon">
                 <i class="font-icons">{{icon}}</i>
             </div>
             <input :type="type" :placeholder="label"
                    :value="val"
                    :readonly="readonly"
+                   :disabled="disabled"
                    @focus="handleToFocus"
                    @blur="handleToBlur"
                    @input="handleToInput($event)"
                    @change="handleToChange($event)"
                    v-focus="autoFocus"
+                   :class="{disabled:disabled}"
             >
         </div>
     </div>
@@ -36,9 +38,9 @@
                 type: Boolean,
                 default: false
             },
-            disable: {
+            disabled: {
                 type: Boolean,
-                default: true
+                default: false
             },
             readonly: {
                 type: Boolean,
@@ -49,11 +51,11 @@
                 type: Boolean,
                 default: false
             },
-            val:{}
+            val: {}
         },
-        model:{
-            prop:['val'],
-            event:'input'
+        model: {
+            prop: ['val'],
+            event: 'input'
         },
         data() {
             return {
@@ -79,21 +81,36 @@
             handleToInput(e) {
                 this.showClear = true
                 this.$emit('input', e.target.value)
+                this.showClearBtn()
             },
             handleToChange(e) {
                 this.$emit('change', e.target.value)
+                this.showClearBtn()
             },
-            handleToBlur(e) {
+            handleToBlur() {
                 this.currentFocus = false
                 this.showClear = false
-                this.$emit('blur', e.target.value)
+                this.$emit('blur')
             },
-            handleToFocus(e) {
+            handleToFocus() {
                 this.currentFocus = true
-                this.$emit('focus', e.target.value)
+                this.$emit('focus')
+                this.showClearBtn()
             },
-            clear(e) {
-                this.$emit('clear', e.target.value)
+            clear() {
+                this.$emit('input', '');
+                this.$emit('change', '');
+                this.showClear = false
+               // this.$emit('clear');
+            },
+            showClearBtn() {
+                this.$nextTick(() => {
+                    if (this.val) {
+                        this.showClear = true
+                    } else {
+                        this.showClear = false
+                    }
+                })
             }
         }
     }
@@ -111,6 +128,7 @@
             transform: scale(.7);
             right: -8px;
             top: 3px;
+            opacity: .5;
 
             .oh-button {
                 // color: #ddd;
@@ -129,7 +147,7 @@
                 line-height: 34px;
                 color: #666;
                 font-size: 22px;
-                margin-right: 16px;
+                margin-right: 8px;
             }
 
             input {
@@ -140,11 +158,19 @@
                 height: 40px;
                 font-size: 14px;
                 color: #333;
+                padding-left: 8px;
+                box-sizing: border-box;
                 border-bottom: 1px solid #f1f1f1;
 
                 &::-webkit-input-placeholder {
                     color: #999;
                 }
+            }
+
+            .disabled {
+                color: #ccc;
+                background: #fafafa;
+                border-bottom: 1px solid #fafafa;
             }
 
             &::after {
@@ -156,8 +182,8 @@
                 left: 0;
                 bottom: -1px;
                 transform: scale(0);
-                transform-origin: center;
-                transition: all ease .4s;
+                transform-origin: left;
+                transition: all ease .6s;
             }
 
 

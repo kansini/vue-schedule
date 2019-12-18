@@ -12,7 +12,7 @@
                 <oh-input label="添加邀请对象" v-model="form.inviter" icon="people"/>
             </oh-form-item>
             <oh-form-item>
-                <oh-input label="添加地点" v-model="form.date1" icon="location_on"/>
+                <oh-input label="添加地点" v-model="form.date1" icon="location_on" disabled/>
             </oh-form-item>
             <oh-form-item>
                 <oh-input label="设置提醒" v-model="form.date1" icon="notifications_active"/>
@@ -27,18 +27,9 @@
 <script>
     export default {
         name: "ScheduleForm",
+        props:['form'],
         data() {
             return {
-                form: {
-                    name: '走访',
-                    region: '',
-                    date1: this.startDate,
-                    date2: '',
-                    inviter: '老王',
-                    type: [],
-                    resource: '',
-                    desc: ''
-                }
             }
         },
         computed:{

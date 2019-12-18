@@ -1,9 +1,9 @@
 <template>
-    <button :icon="icon" class="oh-button" :class="[{rotate:rotate},{flat:type == 'flat'},
+    <div :icon="icon" class="oh-button" :class="[{rotate:rotate},{flat:type == 'flat'},
     {primary:type == 'primary'},{circle:circle}]"
-            @click="handleToClick">
+      @mousedown.prevent  @click="handleToClick">
         <slot></slot>
-    </button>
+    </div>
 </template>
 
 <script>

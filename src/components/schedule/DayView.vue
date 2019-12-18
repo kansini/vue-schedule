@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="schedule-day-list">
-                <div class="week" v-for="index in 24">
+                <div class="week" v-for="index in 24" @click="handleHour">
 
                 </div>
             </div>
@@ -33,6 +33,12 @@
                         week: '周日',
                         day: '15'
                     }
+            }
+        },
+        methods:{
+            handleHour(e) {
+                const rect = e.target.getBoundingClientRect()//获取点击的dom的位置
+                this.$emit('handleHour', rect);
             }
         }
     }

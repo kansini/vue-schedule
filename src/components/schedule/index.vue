@@ -3,17 +3,20 @@
         <schedule-header @addSchedule="newSchedule" @showList="showScheduleList"/>
         <div class="schedule-content">
             <transition-group name="toggle-view" tag="div">
-                <dayView v-if="currentViewIndex == 0" :key="0"></dayView>
-                <weekView v-if="currentViewIndex == 1" :key="1"></weekView>
-                <monthView v-if="currentViewIndex == 2 " :key="2" @handleDay="clickDay"></monthView>
+                <dayView v-if="currentViewIndex == 0" :key="0" @handleHour="DayNewSchedule"></dayView>
+                <weekView v-if="currentViewIndex == 1" :key="1" @handleHour="newSchedule"></weekView>
+                <monthView v-if="currentViewIndex == 2 " :key="2" @handleDay="newSchedule"></monthView>
                 <yearView v-if="currentViewIndex == 3" :key="3"></yearView>
             </transition-group>
         </div>
-        <oh-dialog :visible.sync="showDialog" :width="`${dialogWidth}px`" :height="`${dialogHeight}px`" title="新增日志"
+        <oh-dialog title="新增日志"
+                   :visible.sync="showDialog"
+                   :width="`${dialogWidth}px`"
+                   :height="`${dialogHeight}px`"
                    :left="dialogLeft"
                    :top="dialogTop"
                    :ani="ani">
-            <schedule-form></schedule-form>
+            <schedule-form :form="form"></schedule-form>
             <div slot="extra" class="header-extra">
                 <oh-button circle icon="more_vert"></oh-button>
             </div>
@@ -52,7 +55,17 @@
                 dialogTop: 16,
                 dialogWidth: 480,
                 dialogHeight: 496,
-                ani:"leftIn"
+                ani: "leftIn",
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    inviter: '',
+                    type: [],
+                    resource: '',
+                    desc: ''
+                }
             }
         },
         computed: {
@@ -66,14 +79,12 @@
             }
         },
         methods: {
-            newSchedule() {
-                this.showDialog = true
-            },
             showScheduleList() {
                 this.drawer = true
             },
-            clickDay(rect) {
+            newSchedule(rect) {
                 this.showDialog = true
+                //this.form.date1 = date
                 let fullWidth = document.documentElement.clientWidth
                 let fulHeight = document.documentElement.clientHeight
                 let x = fullWidth - rect.x - rect.width - 40
@@ -95,8 +106,22 @@
                 } else {
                     this.dialogTop = rect.y - this.dialogHeight + rect.height
                 }
-                // console.log(y)
-                // console.log(dialogHeight)
+            },
+            DayNewSchedule(rect) {
+                this.showDialog = true
+                let fulHeight = document.documentElement.clientHeight
+                let y = fulHeight - rect.y
+                this.dialogLeft = 400
+                this.ani = "leftIn"
+                if (y > this.dialogHeight) {
+                    this.dialogTop = rect.y
+                } else if (y < rect.height) {
+                    this.dialogTop = rect.y - this.dialogHeight
+                } else if (rect.y < this.dialogHeight) {
+                    this.dialogTop = 16
+                } else {
+                    this.dialogTop = rect.y - this.dialogHeight + rect.height
+                }
             }
         }
     }
