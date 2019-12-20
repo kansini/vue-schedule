@@ -8,7 +8,7 @@
                 <oh-input placeholder="开始日期" v-model="startDate"/>
                 <oh-input placeholder="结束日期" v-model="startDate"/>
             </oh-form-item>
-            <oh-form-item icon="people">
+            <oh-form-item icon="group_add">
                 <oh-input placeholder="添加邀请对象" v-model="form.inviter" clearable/>
             </oh-form-item>
             <oh-form-item icon="location_on">

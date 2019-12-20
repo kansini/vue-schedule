@@ -90,13 +90,15 @@
                 display: flex;
                 justify-content: space-between;
                 box-sizing: border-box;
-                @include header_theme($header-color-theme1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
+                //border-bottom: 1px solid #f1f1f1;
+                // @include header_theme($header-color-theme1);
 
                 .oh-button {
-                    color: #fff;
+                    //   color: #fff;
 
                     &:hover {
-                        background: rgba(255, 255, 255, .2);
+                        //      background: rgba(255, 255, 255, .2);
                     }
                 }
 
@@ -109,12 +111,18 @@
                     white-space: nowrap;
                     font-size: 20px;
                     font-weight: 600;
-                    color: #fff;
+                    @include listInfo_icon_theme($header-color-theme1);
+                    //color: #333;
                 }
 
                 .header-options {
                     display: flex;
                     justify-content: flex-end;
+
+                    .header-extra {
+                        display: flex;
+                        justify-content: flex-end;
+                    }
                 }
             }
 
@@ -137,7 +145,7 @@
             height: 100%;
             left: 0;
             top: 0;
-            background: rgba(255, 255, 255, .5);
+            background: rgba(0, 0, 0, .3);
         }
     }
 

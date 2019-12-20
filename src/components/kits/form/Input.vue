@@ -1,9 +1,9 @@
 <template>
     <div class="oh-input">
         <div class="clear" v-if="clearable">
-            <oh-button circle icon="close" v-if="showClear"  @click="clear"></oh-button>
+            <oh-button circle icon="close" v-if="showClear" @click="clear"></oh-button>
         </div>
-        <div class="input-item" :class="[{inputFocus:currentFocus},{large:large}]">
+        <div class="input-item" :class="[{inputFocus:currentFocus},{large:large}]" v-if="type != 'textarea'">
             <input :type="type" :placeholder="placeholder"
                    :value="val"
                    :readonly="readonly"
@@ -15,6 +15,21 @@
                    v-focus="autoFocus"
                    :class="{disabled:disabled}"
             >
+        </div>
+        <div class="textarea-item" :class="{inputFocus:currentFocus}" v-else>
+              <textarea rows="10"
+                        :placeholder="placeholder"
+                        :value="val"
+                        :readonly="readonly"
+                        :disabled="disabled"
+                        @focus="handleToFocus"
+                        @blur="handleToBlur"
+                        @input="handleToInput($event)"
+                        @change="handleToChange($event)"
+                        v-focus="autoFocus"
+                        :class="{disabled:disabled}"
+              >
+            </textarea>
         </div>
     </div>
 </template>
@@ -101,7 +116,7 @@
                 this.$emit('input', '');
                 this.$emit('change', '');
                 this.showClear = false
-               // this.$emit('clear');
+                // this.$emit('clear');
             },
             showClearBtn() {
                 this.$nextTick(() => {
@@ -120,14 +135,14 @@
     .oh-input {
         position: relative;
         width: 100%;
-        height: 40px;
+        //height: 40px;
 
 
         .clear {
             position: absolute;
             transform: scale(.7);
             right: -8px;
-            top: 3px;
+            top: 2px;
             opacity: .5;
 
             .oh-button {
@@ -151,7 +166,7 @@
                 height: 40px;
                 font-size: 14px;
                 color: #333;
-               // padding-left: 8px;
+                padding-right: 16px;
                 box-sizing: border-box;
                 border-bottom: 1px solid #f1f1f1;
 
@@ -177,24 +192,71 @@
                 bottom: -1px;
                 transform: scale(0);
                 transform-origin: center;
-                transition: all ease .5s;
+                transition: all ease .3s;
+            }
+        }
+
+        .textarea-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 64px;
+
+
+            textarea {
+                border: none;
+                outline: none;
+                background: transparent;
+                width: 100%;
+                height: 64px;
+                font-size: 14px;
+                color: #333;
+                padding:8px 16px 0 0;
+                box-sizing: border-box;
+                border-bottom: 1px solid #f1f1f1;
+
+                &::-webkit-input-placeholder {
+                    color: #999;
+                }
+            }
+
+
+            .disabled {
+                color: #ccc;
+                background: #fafafa;
+                border-bottom: 1px solid #fafafa;
+                cursor: not-allowed;
+            }
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 2px;
+                @include background_theme($background-theme1);
+                left: 0;
+                bottom: -1px;
+                transform: scale(0);
+                transform-origin: center;
+                transition: all ease .3s;
             }
 
 
         }
 
+
         .large {
             //height: 48px;
 
             &::after {
-               // bottom: -8px;
+                // bottom: -8px;
             }
 
             input {
                 font-size: 20px;
                 font-weight: 400;
-               // height: 48px;
-               // line-height: 48px;
+                // height: 48px;
+                // line-height: 48px;
             }
         }
 

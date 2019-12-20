@@ -15,15 +15,22 @@
                    :height="`${dialogHeight}px`"
                    :left="dialogLeft"
                    :top="dialogTop"
-                   :ani="ani">
+                   :ani="ani"
+                   :close-on-click="true"
+        >
             <schedule-form :form="form"></schedule-form>
             <div slot="extra" class="header-extra">
-                <oh-button circle icon="more_vert"></oh-button>
+                <el-tooltip  effect="dark" content="更多" >
+                    <oh-button circle icon="more_vert"></oh-button>
+                </el-tooltip>
+                <el-tooltip  effect="dark" content="保存" >
+                    <oh-button circle icon="save"  @click="showDialog = false"></oh-button>
+                </el-tooltip>
             </div>
-            <div slot="footer" class="dialog-footer">
-                <oh-button type="flat" @click="showDialog = false">取消</oh-button>
-                <oh-button type="primary" @click="showDialog = false">保存</oh-button>
-            </div>
+<!--            <div slot="footer" class="dialog-footer">-->
+<!--                <oh-button type="flat" @click="showDialog = false">取消</oh-button>-->
+<!--                <oh-button type="primary" @click="showDialog = false">保存</oh-button>-->
+<!--            </div>-->
         </oh-dialog>
         <theme/>
     </div>

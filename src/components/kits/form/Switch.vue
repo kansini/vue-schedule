@@ -72,6 +72,7 @@
     .oh-switch {
         display: flex;
         justify-content: flex-start;
+        align-items: center;
 
         .switch-label {
             color: #999;
@@ -93,36 +94,61 @@
             }
 
             label {
+                position: relative;
                 display: block;
-                background-color: #EEEEEE;
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
                 border-radius: 16px;
+                transition: all ease .6s;
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    top: 0;
+                    border-radius: 16px;
+                    height: 100%;
+                    width: 16px;
+                    background: #fff;
+                    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
+                    transition: all 0.2s ease;
+                    z-index: 999;
+                }
+
+                &::after {
+                    position: absolute;
+                    content: '';
+                    //display: block;
+                    border-radius: 16px;
+                    //height: 8px;
+                    //width: 100%;
+                    //left: 0;
+                    //top:4px;
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    top:0;
+                    background-color: #e8e8e8;
+                    transition: all 0.4s ease;
+                }
+
+
             }
 
+
             /*在label标签内容之前添加如下样式，形成一个未选中状态*/
-            label:before {
-                content: '';
-                display: block;
-                border-radius: 16px;
-                height: 100%;
-                width: 16px;
-                background: #fff;
-                opacity: 1;
-                box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
-                transition: all 0.2s ease;
-            }
 
 
             /*选中后，未选中样式消失*/
-            #switch:checked ~ label:before {
-                transform: translateX(17px);
+            #switch:checked ~ label::before {
+                transform: translateX(16px);
+                //@include background_theme($background-theme1);
                 box-shadow: -1px 1px 1px 1px rgba(0, 0, 0, 0.08);
             }
 
             /*选中后label的背景色改变*/
-            #switch:checked ~ label {
+            #switch:checked ~ label::after {
                 @include background_theme($background-theme1);
             }
         }
