@@ -7,7 +7,7 @@
             <div v-for="(item, index) in visibleCalendar" :key="index" class="date-view"
                  :class="[{'current':isCurrentMonth(item.date)},
                  {'notCurrent':!isCurrentMonth(item.date)},
-                 {today:isToday(item.date)}]" @click="handleDay">
+                 {today:isToday(item.date)}]" @click="handleDay($event,item)">
                 <span class="day" @click="jumpToDay(0)">{{item.day | day}}</span>
                 <div class="schedule-list">
                     <div class="schedule-list-item">
@@ -99,10 +99,9 @@
                 // });
                 // this.$set(item, 'clickDay', true);
             },
-            handleDay(e) {
+            handleDay(e, item) {
                 const rect = e.target.getBoundingClientRect()//获取点击的dom的位置
-                const date = e.target
-                this.$emit('handleDay', rect, date);
+                this.$emit('handleDay', rect, item);
             }
         }
     }

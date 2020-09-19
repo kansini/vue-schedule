@@ -211,7 +211,7 @@
                 height: 64px;
                 font-size: 14px;
                 color: #333;
-                padding:8px 16px 0 0;
+                padding: 8px 16px 0 0;
                 box-sizing: border-box;
                 border-bottom: 1px solid #f1f1f1;
 

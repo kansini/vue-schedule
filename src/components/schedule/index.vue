@@ -20,17 +20,17 @@
         >
             <schedule-form :form="form"></schedule-form>
             <div slot="extra" class="header-extra">
-                <el-tooltip  effect="dark" content="更多" >
+                <el-tooltip effect="dark" content="更多">
                     <oh-button circle icon="more_vert"></oh-button>
                 </el-tooltip>
-                <el-tooltip  effect="dark" content="保存" >
-                    <oh-button circle icon="save"  @click="showDialog = false"></oh-button>
+                <el-tooltip effect="dark" content="保存">
+                    <oh-button circle icon="save" @click="saveSchedule"></oh-button>
                 </el-tooltip>
             </div>
-<!--            <div slot="footer" class="dialog-footer">-->
-<!--                <oh-button type="flat" @click="showDialog = false">取消</oh-button>-->
-<!--                <oh-button type="primary" @click="showDialog = false">保存</oh-button>-->
-<!--            </div>-->
+            <!--            <div slot="footer" class="dialog-footer">-->
+            <!--                <oh-button type="flat" @click="showDialog = false">取消</oh-button>-->
+            <!--                <oh-button type="primary" @click="showDialog = false">保存</oh-button>-->
+            <!--            </div>-->
         </oh-dialog>
         <theme/>
     </div>
@@ -64,7 +64,8 @@
                 dialogHeight: 496,
                 ani: "leftIn",
                 form: {
-                    name: '',
+                    title: '',
+                    startDate: '',
                     region: '',
                     isNotify: false,
                     date1: '',
@@ -90,7 +91,7 @@
             showScheduleList() {
                 this.drawer = true
             },
-            newSchedule(rect) {
+            newSchedule(rect, item) {
                 this.showDialog = true
                 //this.form.date1 = date
                 let fullWidth = document.documentElement.clientWidth
@@ -114,6 +115,11 @@
                 } else {
                     this.dialogTop = rect.y - this.dialogHeight + rect.height
                 }
+                console.log(item.event.title)
+            },
+            saveSchedule() {
+                this.showDialog = false
+
             },
             DayNewSchedule(rect) {
                 this.showDialog = true

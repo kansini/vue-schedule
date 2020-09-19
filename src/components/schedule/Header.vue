@@ -44,7 +44,7 @@
                 <oh-button :icon="notify?'notifications_active':'notifications'" circle :class="{notify:notify}"
                            @click="notify = !notify"></oh-button>
             </el-tooltip>
-            <el-tooltip class="item" effect="dark" content="全屏" placement="top">
+            <el-tooltip class="item" effect="dark" :content="isFullScreen ? '退出全屏' : '全屏' " placement="top">
                 <oh-button :icon="fullscreenIcon" circle @click="toggleFullscreen"></oh-button>
             </el-tooltip>
             <el-dropdown trigger="click">
@@ -77,7 +77,7 @@
         data() {
             return {
                 views: ["日", "周", "月", "年"],
-                isFullscreen: false,
+                isFullScreen: false,
                 fullscreenIcon: "fullscreen",
                 notify: false
             }
