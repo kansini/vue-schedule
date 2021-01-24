@@ -1,7 +1,7 @@
 <template>
     <div class="schedule-year-view">
         <div class="schedule-year-list">
-            <div class="schedule-year-list-item" v-for="(item,index) in monthList">
+            <div class="schedule-year-list-item" v-for="(item,index) in monthList" :key="index">
                 <monthViewThumb :month="item"></monthViewThumb>
             </div>
         </div>

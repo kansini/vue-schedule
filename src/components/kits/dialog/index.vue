@@ -80,9 +80,11 @@
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, .1);
             box-sizing: border-box;
-            background: rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, .01);
+            //background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(12px);
             z-index: 999;
-            overflow: hidden;
+            //overflow: hidden;
 
 
             .dialog-header {
@@ -145,7 +147,9 @@
             height: 100%;
             left: 0;
             top: 0;
-            background: rgba(0, 0, 0, .3);
+            background: rgba(255, 255, 255, .05);
+            // backdrop-filter: blur(6px);
+            transition: all ease .4s;
         }
     }
 

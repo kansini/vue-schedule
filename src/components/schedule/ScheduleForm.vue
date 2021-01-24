@@ -5,8 +5,8 @@
                 <oh-input placeholder="请添加日志标题" large v-model="form.title" auto-focus clearable/>
             </oh-form-item>
             <oh-form-item icon="access_time">
-                <oh-input placeholder="开始日期" v-model="form.startDate"/>
-                <oh-input placeholder="结束日期" v-model="form.startDate"/>
+                <oh-date-picker placeholder="开始日期" v-model="form.startDate"/>
+<!--                <oh-input placeholder="结束日期" v-model="form.startDate"/>-->
             </oh-form-item>
             <oh-form-item icon="group_add">
                 <oh-input placeholder="添加邀请对象" v-model="form.inviter" clearable/>

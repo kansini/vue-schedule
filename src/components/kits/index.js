@@ -5,7 +5,8 @@ import ohTab from './tab'
 import ohDialog from './dialog'
 import ohFormItem from './form/FormItem'
 import ohInput from './form/Input'
-import ohSwitch from './form/Switch'
+import ohSwitch from './form/Switch' //ohDatePicker
+import ohDatePicker from './form/DatePicker'
 
 
 const components = {
@@ -16,7 +17,8 @@ const components = {
     ohDialog,
     ohInput,
     ohFormItem,
-    ohSwitch
+    ohSwitch,
+    ohDatePicker
 }
 
 const install = (Vue, opts = {}) => {

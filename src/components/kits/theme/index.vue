@@ -12,8 +12,8 @@
                 </li>
             </ul>
             <div class="btn-confirm" >
-                <oh-button type="flat" @click="confirm(false)">取消</oh-button>
-                <oh-button type="primary" @click="confirm(false)">确定</oh-button>
+                <oh-button type="flat" size="small" @click="confirm(false)">取消</oh-button>
+                <oh-button type="primary" size="small" @click="confirm(false)">确定</oh-button>
             </div>
         </div>
     </transition>
@@ -209,6 +209,8 @@
     }
 
     .btn-confirm {
+        display: flex;
+        justify-content: flex-end;
         position: absolute;
         right: 16px;
         bottom: 16px;

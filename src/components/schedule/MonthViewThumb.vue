@@ -2,7 +2,7 @@
     <div class="month-view-thumb">
         <div class="month-view-thumb-title">{{month.name}}</div>
         <div class="week-list">
-            <div v-for="(item,index) in weekArr">{{item}}</div>
+            <div v-for="(item,index) in weekArr" :key="index">{{item}}</div>
         </div>
         <div class="day-list">
             <div :class="[{'current':isCurrentMonth(item.date)},
